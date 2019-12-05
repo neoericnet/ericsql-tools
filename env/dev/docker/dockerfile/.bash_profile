@@ -33,3 +33,5 @@ alias cddm3="cd /data/mysql/mgrdemo/s3"
 alias cddrpl="cd /data/mysql/rpldemo"
 alias cddr1="cd /data/mysql/rpldemo/s1"
 alias cddr2="cd /data/mysql/rpldemo/s2"
+
+umask 000

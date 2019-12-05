@@ -12,7 +12,7 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     && git config --system user.name "yaodi03" \
     && git config --system user.email yaodi03@meituan.com \
     && git config --system core.excludesfile /etc/gitignore
-COPY 3rd/boost/boost_1_59_0.tar.bz2 /root/soft/boost/
+COPY boost_1_59_0 /root/soft/boost/boost_1_59_0
 COPY gitignore /etc/
 COPY --chown=mysql:mysql bin /soft/mysql/bin/
 COPY --chown=mysql:mysql .bash_profile /soft/mysql/
@@ -20,8 +20,8 @@ COPY --chown=mysql:mysql .bashrc /soft/mysql/
 COPY --chown=mysql:mysql .ssh /soft/mysql/.ssh/
 RUN chmod -R 755 /soft/mysql/bin/ \
     && chmod 600 /soft/mysql/.ssh/id_rsa \
-    && tar -xjf /root/soft/boost/boost_1_59_0.tar.bz2 \
-    && sh /root/soft/boost/boost_1_59_0/bootstrap.sh \
-    && sh /root/soft/boost/boost_1_59_0/b2 install \
+    && cd /root/soft/boost/boost_1_59_0 \
+    && ./bootstrap.sh \
+    && ./b2 install \
     && chmod -R 755 /usr/local/include/boost \
     && chmod -R 755 /usr/local/lib

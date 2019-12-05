@@ -19,7 +19,50 @@ The mysql-test-run.pl script is used to run the tests.
 
 ```
 #in your work directory
+mkdir -p $HOME/dev/git
+cd $HOME/dev/git
 git clone git@git.eric.com:mysqlkernel/ericsql-tools.git mysql-tools
 sh mysql-tools/env/dev/docker/builddockerdev.sh
+```
+
+log cmd:
+
+```
+docker exec -it mysqlsql-dev /bin/bash
+su - mysql
+```
+
+download mysql source code
+
+```
+getsource
+```
+
+build and install mysql
+
+```
+cmakemysql && makemysql && makeinstallmysql
+```
+
+
+
+TODO:
+
+init mysqldemo database
+
+```
+initmysqldemo
+```
+
+start mysql demo
+
+```
+startbuildmysql
+```
+
+conn mysql demo(password:mysql123)
+
+```
+connmysql
 ```
 
