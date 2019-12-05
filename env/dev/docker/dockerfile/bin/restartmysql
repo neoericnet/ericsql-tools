@@ -1,0 +1,4 @@
+echo begin restart builded mysql!
+stopmysql
+startbuildmysql
+echo restart builded mysql success!

@@ -1,0 +1,3 @@
+#!/bin/sh
+copymysqlmtrtest $1
+copymysqlmtrresult $1

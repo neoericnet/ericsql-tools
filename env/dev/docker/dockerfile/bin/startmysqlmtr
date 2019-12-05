@@ -1,0 +1,7 @@
+cd /soft/mysql/source/build/mysql/debug/mysql-test
+chmod -R 755 *
+rm -rf /soft/mysql/source/build/mysql/mtr.mysql.log.bak
+mv /soft/mysql/source/build/mysql/mtr.mysql.log /soft/mysql/source/build/mysql/mtr.mysql.log.bak
+nohup /soft/mysql/source/build/mysql/debug/mysql-test/mtr -timer --timestamp --parallel=4 --force --max-test-fail=0 --testcase-timeout=20 --big-test --retry=1 --suite=main,sys_vars,binlog,federated,gis,rpl,innodb,innodb_gis,innodb_fts,innodb_zip,innodb_undo,memcached,perfschema,funcs_1,opt_trace,parts,auth_sec,query_rewrite_plugins,gcol,sysschema,test_service_sql_api,json,connection_control >>/soft/mysql/source/build/mysql/mtr.mysql.log 2>&1 &
+tail -f /soft/mysql/source/build/mysql/mtr.mysql.log
+

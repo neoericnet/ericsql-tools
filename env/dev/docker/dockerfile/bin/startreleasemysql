@@ -1,0 +1,3 @@
+nohup /soft/mysql/source/build/mysqlrelease/_CPack_Packages/Linux/TGZ/mysql-5.7.22-linux-x86_64/bin/mysqld --defaults-file=/data/mysql/ericdemo.cnf >/dev/null 2>&1 &
+echo start released mysql success!
+

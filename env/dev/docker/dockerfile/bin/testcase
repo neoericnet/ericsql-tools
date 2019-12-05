@@ -1,0 +1,10 @@
+#!/bin/sh
+filename=$HOME/.testcase
+localtestcasename=$1
+if [ -z $localtestcasename ]
+then
+  echo "empty test case!"
+  exit
+fi
+rm -rf $filename
+echo $localtestcasename>>$filename

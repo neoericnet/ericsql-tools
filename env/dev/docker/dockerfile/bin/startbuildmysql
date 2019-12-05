@@ -1,0 +1,2 @@
+nohup /soft/mysql/source/build/mysql/debug/bin/mysqld --defaults-file=/data/mysql/mysqldemo.cnf >/dev/null 2>&1 &
+echo start builded mysql success!

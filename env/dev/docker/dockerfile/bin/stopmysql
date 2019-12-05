@@ -1,0 +1,3 @@
+kill -9 `ps -ef |grep "bin/mysqld" |grep "mysqldemo" |grep -v grep |awk '{print $2}'`
+sleep 1
+echo stop mysql success!

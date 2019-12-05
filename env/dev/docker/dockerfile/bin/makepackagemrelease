@@ -1,0 +1,6 @@
+#!/bin/bash
+cd /soft/mysql/source/build/mysqlrelease
+rm -rf _CPack_Packages
+rm -rf *.tar.gz
+make package
+chown -R mysql:mysql *

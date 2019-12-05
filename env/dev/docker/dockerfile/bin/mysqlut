@@ -1,0 +1,32 @@
+#!/bin/sh
+#check parameter, it is ut name
+utname=$1
+echo ut name:$utname
+if [ -z $utname ]
+then
+  echo "empty ut name!"
+  exit
+fi
+#define vars
+source_path=/soft/mysql/source/mysql
+build_path=/soft/mysql/source/build/mysql
+ut_source_path=$source_path/unittest/gunit
+ut_build_path=$source_path/unittest/gunit
+include_build_path=$build_path/include
+include_source_path=$source_path/include
+include_sql_path=$source_path/sql
+gtest_path=/usr/local/include/gtest
+#command
+if echo $utname | grep -qi "all"
+then
+  echo make all unittest
+  cd $build_path
+  make test-unit
+else  
+  cd $ut_source_path
+  echo current_path:$PWD,include_build_path:$include_build_path,include_source_path:$include_source_path,include_sql_path:$include_sql_path
+  g++ -I $include_build_path -I $include_source_path -I $include_sql_path -c $utname-t.cc
+  echo gtest_path:$gtest_path
+  g++ -I $gtest_path -lgtest -lgtest_main -lpthread $utname-t.o -o $utname-t
+  ./$utname-t
+fi

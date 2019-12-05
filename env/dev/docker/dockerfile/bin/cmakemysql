@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+cd /soft/mysql/source/build/mysql
+ls |grep -v "^debug$" |xargs rm -rf
+cmake ../../mysql -DCMAKE_INSTALL_PREFIX=/debug/ -DCMAKE_BUILD_TYPE=Debug -DWITH_INNODB_MEMCACHED=1

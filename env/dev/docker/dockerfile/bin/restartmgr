@@ -1,0 +1,5 @@
+echo begin restart builded mgr!
+stopmgr
+startbuildmgr
+echo restart builded mgr success!
+

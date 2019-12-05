@@ -1,0 +1,4 @@
+kill -9 `ps -ef |grep "mysqld" |grep "mgrdemo1" |grep -v grep |awk '{print $2}'`
+sleep 1
+echo stop mgr1 success!
+

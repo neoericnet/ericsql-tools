@@ -1,0 +1,2 @@
+kill -9 `ps -ef |grep "maria" |grep "mtr" |grep -v grep |awk '{print $2}'`
+echo stop maria mtr success!

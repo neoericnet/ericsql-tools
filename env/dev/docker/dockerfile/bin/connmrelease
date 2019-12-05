@@ -1,0 +1,1 @@
+/soft/mysql/source/build/mysqlrelease/_CPack_Packages/Linux/TGZ/mysql-5.7.22-linux-x86_64/bin/mysql -S/data/mysql/mysqldemo/mysql.sock -uroot -p

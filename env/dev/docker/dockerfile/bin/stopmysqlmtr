@@ -1,0 +1,2 @@
+kill -9 `ps -ef |grep "mysql" |grep "mtr" |grep -v grep |awk '{print $2}'`
+echo stop mysql mtr success!

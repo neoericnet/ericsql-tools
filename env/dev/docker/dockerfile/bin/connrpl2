@@ -1,0 +1,1 @@
+/soft/mysql/source/build/mysql/debug/bin/mysql -S/data/mysql/rpldemo/s2/mysql.sock -uroot -p

@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+cd $HOME/source
+git clone git@192.168.168.74:mysqlkernel/ericsql.git mysql
+chmod -R 777 mysql

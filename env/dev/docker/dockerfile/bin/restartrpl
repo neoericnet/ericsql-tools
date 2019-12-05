@@ -1,0 +1,5 @@
+echo begin restart builded rpl!
+stoprpl
+startbuildrpl
+echo restart builded rpl success!
+

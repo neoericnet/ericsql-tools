@@ -1,0 +1,5 @@
+.idea/*
+*.diff
+cmake-build-debug/*
+.vscode/*
+.project

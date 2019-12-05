@@ -1,0 +1,2 @@
+cd /soft/mysql/source/build/mysql
+make -j4

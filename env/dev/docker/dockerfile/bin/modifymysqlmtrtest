@@ -1,0 +1,26 @@
+#!/bin/sh
+#check parameter, it is mtr test case name
+localtestcasename=$*
+if [ -z $localtestcasename ]
+then
+  localtestcasename=$testcase
+fi
+if [ -z $localtestcasename ]
+then
+  for i in `cat $HOME/.testcase`
+  do
+    localtestcasename=$i
+    break
+  done
+fi
+echo test case name:$localtestcasename
+if [ -z $localtestcasename ]
+then
+  echo "empty test case!"
+  exit
+fi
+#define vars
+source_path=/soft/mysql/source/mysql
+mtr_path=mysql-test/t/
+#command
+vi $source_path/$mtr_path/$localtestcasename.test

@@ -1,0 +1,3 @@
+cd /soft/mysql/source/build/mysql/
+mkdir dump
+gdb -args /soft/mysql/source/build/mysql/debug/bin/mysqldump --defaults-file=/data/mysql/mysqldemo.cnf -uroot -p --socket=/data/mysql/mysqldemo/mysql.sock --skip-comments mysqldemo t1 --tab=/soft/mysql/source/build/mysql/dump
