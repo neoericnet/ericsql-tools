@@ -19,7 +19,9 @@ COPY --chown=mysql:mysql .bash_profile /soft/mysql/
 COPY --chown=mysql:mysql .bashrc /soft/mysql/
 COPY --chown=mysql:mysql .ssh /soft/mysql/.ssh/
 RUN chmod -R 755 /soft/mysql/bin/ \
-    && chmod 600 /soft/mysql/.ssh/id_rsa
-    && cd /root/soft/boost && tar -xjf boost_1_59_0.tar.bz2 && cd /root/soft/boost/boost_1_59_0 \
-    && ./bootstrap.sh && ./b2 install \
-    && chmod -R 755 /usr/local/include/boost && chmod 755 /usr/local/lib
+    && chmod 600 /soft/mysql/.ssh/id_rsa \
+    && tar -xjf /root/soft/boost/boost_1_59_0.tar.bz2 \
+    && sh /root/soft/boost/boost_1_59_0/bootstrap.sh \
+    && sh /root/soft/boost/boost_1_59_0/b2 install \
+    && chmod -R 755 /usr/local/include/boost \
+    && chmod -R 755 /usr/local/lib
