@@ -28,7 +28,7 @@ sh mysql-tools/env/dev/docker/builddockerdev.sh
 log cmd:
 
 ```
-docker exec -it mysqlsql-dev /bin/bash
+docker exec -it mysql-dev /bin/bash
 su - mysql
 ```
 

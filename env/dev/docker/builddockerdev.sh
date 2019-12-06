@@ -7,6 +7,8 @@ echo buidl version=$version
 ##define vars
 #path
 root_path=$HOME/dev
+user_name=$(git config --get user.name)
+git_user_email=$user_name@163.com
 docker_path=$root_path/docker
 dockerfile_path=$docker_path/dockerfile
 shell_path=$(cd "$(dirname "$0")"; pwd)
@@ -22,7 +24,7 @@ docker_container_name=mysql-dev
 #clean
 if [ -d "$docker_path" ]; then
   cd $docker_path
-  rm -rf dockerfile builddockerdev.sh
+  rm -rf dockerfile builddockerdev.sh gitconfig.sh
 fi
 #mkdir
 mkdir -p $docker_path
@@ -33,15 +35,31 @@ mkdir -p $dockerfile_path/.ssh
 
 ##clean env
 set +e
-chmod -R 777 $source_path
+chmod 777 $source_path
 chmod -R 777 $build_path
 chmod -R 777 $data_path
+chmod 755 $data_path/*.cnf
 docker stop $docker_container_name
 docker rm -v $docker_container_name
 docker rmi $docker_image_version
 set -e
 
 ##prepare for build
+#git config file
+>$dockerfile_path/gitconfig.sh
+echo #!/bin/sh > $dockerfile_path/gitconfig.sh
+echo git config --system core.autocrlf false >> $dockerfile_path/gitconfig.sh
+echo git config --system core.safecrlf warn >> $dockerfile_path/gitconfig.sh
+echo git config --system color.status auto >> $dockerfile_path/gitconfig.sh
+echo git config --system color.diff auto >> $dockerfile_path/gitconfig.sh
+echo git config --system color.branch auto >> $dockerfile_path/gitconfig.sh
+echo git config --system color.interactive auto >> $dockerfile_path/gitconfig.sh
+echo git config --system http.sslVerify false >> $dockerfile_path/gitconfig.sh
+echo git config --system credential.helper cache >> $dockerfile_path/gitconfig.sh
+echo git config --system user.name "$user_name" >> $dockerfile_path/gitconfig.sh
+echo git config --system user.email "$git_user_email" >> $dockerfile_path/gitconfig.sh
+echo git config --system core.excludesfile /etc/gitignore >> $dockerfile_path/gitconfig.sh
+chmod 755 $dockerfile_path/gitconfig.sh
 #cp file
 cp -rf $HOME/.ssh/* $dockerfile_path/.ssh
 cp -rf $tools_path/env/dev/docker/dockerfile $docker_path
@@ -66,5 +84,5 @@ docker ps
 #clean
 if [ -d "$docker_path" ]; then
   cd $docker_path
-  rm -rf dockerfile builddockerdev.sh
+  rm -rf dockerfile builddockerdev.sh gitconfig.sh
 fi
