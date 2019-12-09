@@ -78,24 +78,27 @@ ssh-keygen -t rsa -C "neoericnet@163.com"
 
 
 
+Init git dir:
+
 ```
 #in your work directory
 mkdir -p $HOME/dev/git
 cd $HOME/dev/git
 git clone git@git.eric.com:mysqlkernel/ericsql-tools.git mysql-tools
-sh mysql-tools/env/dev/docker/builddockerdev.sh
+docker pull centos:centos6
 ```
 
-log cmd:
+Add some alias to $HOME/.bash_profile in local machine.
 
 ```
-docker exec -it mysql-dev /bin/bash
-su - mysql
+alias buildd="sh $HOME/dev/git/mysql-tools/env/dev/docker/builddockerdev.sh"
+alias logind="docker exec -it mysql-dev /bin/bash"
 ```
 
 download mysql source code
 
 ```
+su - mysql
 getsource
 ```
 
