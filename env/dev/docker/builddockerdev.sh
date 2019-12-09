@@ -68,7 +68,10 @@ cd $dockerfile_path
 tar -xjf 3rd/boost/boost_1_59_0.tar.bz2
 #build file
 #git config file
-
+#mysqldemo cnf file
+if [ ! -f "$data_path/mysqldemo.cnf" ]; then
+  cp -f cp -rf $tools_path/env/dev/docker/mysqldemo.cnf $data_path/mysqldemo.cnf
+fi
 ##build images
 cd $dockerfile_path
 docker build -t $docker_image_version .
