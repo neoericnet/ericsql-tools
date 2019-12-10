@@ -1,5 +1,5 @@
 FROM centos:centos6
-RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel libicu libicu-devel libXp libXt libXtst glibc-common glibc-devel glibc glibc-headers compat-glibc-headers compat-glibc glibc-static glibc-utils bison perl ncurses-devel libaio-devel numactl numactl-devel cmake wget nc git openssl openssl-libs openssl-devel \
+RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel libicu libicu-devel libXp libXt libXtst glibc-common glibc-devel glibc glibc-headers compat-glibc-headers compat-glibc glibc-static glibc-utils bison perl ncurses-devel libaio-devel numactl numactl-devel cmake wget nc git openssl openssl-libs openssl-devel man epel-release check boost-devel asio-devel readline-devel pam-devel perl-Env time rpmdevtools rpm-build libcurl-devel \
     && mkdir -p /soft/mysql && groupadd mysql && useradd -d /soft/mysql -r -g mysql -s /bin/bash mysql && chown -R mysql:mysql /soft/mysql
 COPY boost_1_59_0 /root/soft/boost/boost_1_59_0
 COPY gitignore /etc/

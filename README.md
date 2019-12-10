@@ -85,7 +85,10 @@ Init git dir:
 mkdir -p $HOME/dev/git
 cd $HOME/dev/git
 git clone git@git.eric.com:mysqlkernel/ericsql-tools.git mysql-tools
+cp -f mysql-tools/env/dev/docker/dockerfile/gitignore /etc/gitignore
+
 docker pull centos:centos6
+
 ```
 
 Add some alias to $HOME/.bash_profile in local machine.
