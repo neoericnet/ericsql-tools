@@ -94,7 +94,8 @@ docker pull centos:centos6
 Add some alias to $HOME/.bash_profile in local machine.
 
 ```
-alias buildd="sh $HOME/dev/git/mysql-tools/env/dev/docker/builddockerdev.sh"
+alias builddi="sh $HOME/dev/git/mysql-tools/env/dev/docker/builddockerdev.sh"
+alias builddc="docker run -itd --name mysql-dev -v /soft/mysql/dev/git:/soft/mysql/source -v /soft/mysql/dev/data:/data/mysql centos:centos6-mysql-dev-1.0"
 alias logind="docker exec -it mysql-dev /bin/bash"
 alias startdd="docker start `docker ps -a |grep centos:centos6-mysql-dev-1.0 |awk '{print $1}'`"
 ```
