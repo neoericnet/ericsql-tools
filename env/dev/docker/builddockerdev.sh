@@ -24,7 +24,7 @@ docker_container_name=mysql-dev
 #clean
 if [ -d "$docker_path" ]; then
   cd $docker_path
-  rm -rf dockerfile builddockerdev.sh gitconfig.sh
+  rm -rf dockerfile builddockerdev.sh gitconfig.sh profileconfig.sh
 fi
 #mkdir
 mkdir -p $docker_path
@@ -60,11 +60,29 @@ echo git config --system user.name "$user_name" >> $dockerfile_path/gitconfig.sh
 echo git config --system user.email "$git_user_email" >> $dockerfile_path/gitconfig.sh
 echo git config --system core.excludesfile /etc/gitignore >> $dockerfile_path/gitconfig.sh
 chmod 755 $dockerfile_path/gitconfig.sh
+#profile config file
+>$dockerfile_path/profileconfig.sh
+echo #!/bin/sh > $dockerfile_path/profileconfig.sh
+echo 'echo "#find .h file for gcc" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo export C_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$C_INCLUDE_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo "#find .h file for g++" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo export CPLUS_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$CPLUS_INCLUDE_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo "#search .so path when execute program" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LD_LIBRARY_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo "#find static lib .a path" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo export LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LIBRARY_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+chmod 755 $dockerfile_path/profileconfig.sh
 #cp file
 cp -rf $HOME/.ssh/* $dockerfile_path/.ssh
 cp -rf $tools_path/env/dev/docker/dockerfile $docker_path
 cp -rf $tools_path/3rd $dockerfile_path
 cd $dockerfile_path
+tar -xjf 3rd/gcc/gcc-4.8.5.tar.bz2
+tar -xvf 3rd/cmake/cmake-3.11.4.tar.gz
+tar -xvf 3rd/bison/bison-3.0.4.tar.gz
 tar -xjf 3rd/boost/boost_1_59_0.tar.bz2
 #build file
 #git config file
@@ -87,5 +105,5 @@ docker ps
 #clean
 if [ -d "$docker_path" ]; then
   cd $docker_path
-  rm -rf dockerfile builddockerdev.sh gitconfig.sh
+  rm -rf dockerfile builddockerdev.sh gitconfig.sh profileconfig.sh
 fi
