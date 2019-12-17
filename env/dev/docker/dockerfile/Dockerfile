@@ -30,3 +30,11 @@ RUN chmod -R 755 /soft/mysql/bin/ \
     && ln -s /usr/local/bin/gcc /usr/local/bin/cc \
     && update-alternatives --install /usr/bin/gcc gcc /usr/local/bin/x86_64-unknown-linux-gnu-gcc 200 \
     && sh /soft/mysql/bin/profileconfig.sh
+ENV C_INCLUDE_PATH /usr/include:/usr/local/include/gtest:$C_INCLUDE_PATH:.
+ENV LD_LIBRARY_PATH /usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LD_LIBRARY_PATH:.
+ENV LIBRARY_PATH /usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LIBRARY_PATH:.
+ENV CPLUS_INCLUDE_PATH /usr/include:/usr/local/include/gtest:$CPLUS_INCLUDE_PATH:.
+RUN cd /root/soft/cmake/cmake-3.11.4 \
+    && ./bootstrap \
+    && make -j$(getconf _NPROCESSORS_ONLN) \
+    && make install
