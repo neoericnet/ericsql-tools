@@ -13,5 +13,20 @@ COPY --chown=mysql:mysql .bashrc /soft/mysql/
 COPY --chown=mysql:mysql .ssh /soft/mysql/.ssh/
 RUN chmod -R 755 /soft/mysql/bin/ \
     && sh /soft/mysql/bin/gitconfig.sh \
-    && chmod 600 /soft/mysql/.ssh/id_rsa
-    
+    && chmod 600 /soft/mysql/.ssh/id_rsa \
+    && cd /root/soft/bison/bison-3.0.4 \
+    && ./configure --prefix="/usr/" \
+    && make -j$(getconf _NPROCESSORS_ONLN) && make install \
+    && cd /root/soft/gcc/gcc-4.8.5 \
+    && ./contrib/download_prerequisites \
+    && mkdir gcc-build \
+    && cd gcc-build \
+    && ../configure -enable-checking=release -enable-languages=c,c++ -disable-multilib \
+    && make -j$(getconf _NPROCESSORS_ONLN) \
+    && make install \
+    && mv /usr/bin/cc /usr/bin/cc-4.4.7 \
+    && mv /usr/bin/gcc /usr/bin/gcc-4.4.7 \
+    && mv /usr/bin/x86_64-redhat-linux-gcc /usr/bin/x86_64-redhat-linux-gcc-4.4.7 \
+    && ln -s /usr/local/bin/gcc /usr/local/bin/cc \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/local/bin/x86_64-unknown-linux-gnu-gcc 200 \
+    && sh /soft/mysql/bin/profileconfig.sh
