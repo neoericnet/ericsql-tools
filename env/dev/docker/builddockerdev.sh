@@ -83,7 +83,6 @@ cd $dockerfile_path
 tar -xjf 3rd/gcc/gcc-4.8.5.tar.bz2
 tar -xvf 3rd/cmake/cmake-3.11.4.tar.gz
 tar -xvf 3rd/bison/bison-3.0.4.tar.gz
-tar -xjf 3rd/boost/boost_1_59_0.tar.bz2
 #build file
 #git config file
 #mysqldemo cnf file
