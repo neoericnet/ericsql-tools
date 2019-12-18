@@ -10,6 +10,7 @@ fi
 chmod -R 777 mysql
 
 #clone mysql-tools
+cd $HOME/source
 if [ ! -d "mysql-tools" ]; then
   git clone git@192.168.168.74:mysqlkernel/ericsql-tools.git mysql-tools
 else

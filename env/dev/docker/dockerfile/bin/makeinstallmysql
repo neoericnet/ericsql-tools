@@ -1,4 +1,5 @@
+#!/bin/bash
 stopmysql
-cd /soft/mysql/source/build/mysql
+cd $HOME/build/mysql
 rm -rf debug
-make install DESTDIR="/soft/mysql/source/build/mysql/"
+make install DESTDIR="$HOME/build/mysql/"

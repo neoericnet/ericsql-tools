@@ -1,2 +1,2 @@
-cd /soft/mysql/source/build/mysqlrelease
+cd $HOME/build/mysql/mysqlrelease
 make -j4

@@ -1,1 +1,1 @@
-gdb --args /soft/mysql/source/build/mysql/debug/bin/mysqld --defaults-file=/data/mysql/rpldemo/rpldemo2.cnf
+gdb --args $HOME/build/mysql/debug/bin/mysqld --defaults-file=/data/mysql/rpldemo/rpldemo2.cnf
