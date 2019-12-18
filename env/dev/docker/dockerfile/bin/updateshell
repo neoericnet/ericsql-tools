@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 set -ex
 export SHELL_PATH=$(dirname $0; pwd)
@@ -17,3 +17,4 @@ chmod -R 777 $HOME/source/mysql-tools
 
 cp -rf $HOME/source/mysql-tools/env/dev/docker/dockerfile/bin/* $HOME/bin/
 chmod -R 777 $HOME/bin
+
