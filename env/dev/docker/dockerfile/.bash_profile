@@ -16,6 +16,7 @@ alias cdd="cd /data/mysql/"
 alias cddm="cd /data/mysql/mysqldemo"
 
 alias cdsm="cd /soft/mysql/source/mysql"
+alias cdsmt="cd /soft/mysql/source/mysql-tools"
 alias cdbm="cd /soft/mysql/source/build/mysql"
 
 export CLION_HOME=/soft/mysql/dev/clion/clion2019

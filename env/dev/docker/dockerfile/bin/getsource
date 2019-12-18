@@ -1,8 +1,19 @@
 #!/bin/bash
-set -e
 cd $HOME/source
+#clone mysql
 if [ ! -d "mysql" ]; then
   git clone git@192.168.168.74:mysqlkernel/ericsql.git mysql
+else
+  cd mysql
+  git pull
 fi
 chmod -R 777 mysql
 
+#clone mysql-tools
+if [ ! -d "mysql-tools" ]; then
+  git clone git@192.168.168.74:mysqlkernel/ericsql-tools.git mysql-tools
+else
+  cd mysql-tools
+  git pull
+fi
+chmod -R 777 mysql-tools
