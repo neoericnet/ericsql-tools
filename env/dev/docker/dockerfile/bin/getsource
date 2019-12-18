@@ -1,20 +1,24 @@
 #!/bin/bash
+
+export SHELL_PATH=$(dirname $0; pwd)
+source $HOME/bin/env
+
 cd $HOME/source
 #clone mysql
 if [ ! -d "mysql" ]; then
-  git clone git@192.168.168.74:mysqlkernel/ericsql.git mysql
+  git clone $mysql_repos mysql
 else
   cd mysql
   git pull
 fi
-chmod -R 777 mysql
+chmod -R 777 $HOME/source/mysql
 
 #clone mysql-tools
 cd $HOME/source
 if [ ! -d "mysql-tools" ]; then
-  git clone git@192.168.168.74:mysqlkernel/ericsql-tools.git mysql-tools
+  git clone $mysql_tools_repos mysql-tools
 else
   cd mysql-tools
   git pull
 fi
-chmod -R 777 mysql-tools
+chmod -R 777 $HOME/source/mysql-tools
