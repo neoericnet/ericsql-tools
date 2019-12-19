@@ -2,6 +2,7 @@
 set -e
 ##define env
 version=1.0
+docker_image_repo=registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel
 echo buidl version=$version
 
 ##define vars
@@ -17,7 +18,7 @@ source_path=$root_path/git/
 build_path=$source_path/build/mysql
 data_path=$root_path/data
 #version
-docker_image_version=centos:centos6-mysql-dev-$version
+docker_image_version=$docker_image_repo:centos6-mysql-dev-$version
 docker_container_name=mysql-dev
 
 ##prepare path
@@ -94,7 +95,8 @@ cd $dockerfile_path
 docker build -t $docker_image_version .
 
 ##run container
-docker run -itd --name $docker_container_name -v $source_path:/soft/mysql/source -v $data_path:/data/mysql $docker_image_version
+docker run -itd --name $docker_container_name -v $source_path:/soft/mysql/source -v $data_path:/data/mysql \
+  $docker_image_version
 
 ##check
 docker images
