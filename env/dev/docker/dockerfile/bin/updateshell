@@ -13,7 +13,7 @@ else
   git pull
 fi
 cd $HOME/source
-chmod -R 777 $HOME/source/mysql-tools
+chmod 777 $HOME/source/mysql-tools
 
 cp -rf $HOME/source/mysql-tools/env/dev/docker/dockerfile/bin/* $HOME/bin/
 chmod -R 777 $HOME/bin

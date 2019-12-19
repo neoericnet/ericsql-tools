@@ -11,7 +11,7 @@ else
   cd mysql
   git pull
 fi
-chmod -R 777 $HOME/source/mysql
+chmod 777 $HOME/source/mysql
 
 #clone mysql-tools
 cd $HOME/source
@@ -21,4 +21,4 @@ else
   cd mysql-tools
   git pull
 fi
-chmod -R 777 $HOME/source/mysql-tools
+chmod 777 $HOME/source/mysql-tools
