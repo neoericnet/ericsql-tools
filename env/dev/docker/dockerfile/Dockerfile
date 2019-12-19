@@ -3,7 +3,7 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     libXp libXt libXtst glibc-common glibc-devel glibc glibc-headers compat-glibc-headers compat-glibc \
     glibc-static glibc-utils perl ncurses-devel libaio-devel numactl numactl-devel wget nc git openssl \
     openssl-libs openssl-devel man epel-release check boost-devel asio-devel readline-devel pam-devel \
-    perl-Env time rpmdevtools rpm-build libcurl-devel dos2unix \
+    perl-Env time rpmdevtools rpm-build libcurl-devel dos2unix tree \
     && mkdir -p /soft/mysql \
     && groupadd mysql \
     && useradd -d /soft/mysql -r -g mysql -s /bin/bash mysql \

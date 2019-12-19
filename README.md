@@ -15,6 +15,31 @@ The mysql-test-run.pl script is used to run the tests.
 
 
 
+## Directory planning
+
+```
+.
+|-- 3rd
+|   |-- bison
+|   |-- boost
+|   |-- cmake
+|   `-- gcc
+|-- env
+|   `-- dev
+|-- LICENSE
+`-- README.md
+
+```
+
+Node: you can use command to get the source tree:
+
+```
+cd $HOME/dev/git/mysql-tools
+tree -L 2
+```
+
+
+
 ## Init develop env
 
 Befor do it, you should install docker and git, and config git in your local machine.
@@ -78,6 +103,19 @@ ssh-keygen -t rsa -C "neoericnet@163.com"
 
 
 
+Add some alias to $HOME/.bash_profile in local machine.
+
+```
+alias builddi="sh $HOME/dev/git/mysql-tools/env/dev/docker/builddockerdev.sh"
+alias builddc="docker run -itd --name mysql-dev -v /soft/mysql/dev/git:/soft/mysql/source -v /soft/mysql/dev/data:/data/mysql registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0"
+alias logind="docker exec -it mysql-dev /bin/bash"
+alias startdd="docker start `docker ps -a |grep mysql-dev |awk '{print $1}'`"
+```
+
+source ~/.bash_profile
+
+
+
 Init git dir:
 
 ```
@@ -87,17 +125,36 @@ cd $HOME/dev/git
 git clone git@git.eric.com:mysqlkernel/ericsql-tools.git mysql-tools
 cp -f mysql-tools/env/dev/docker/dockerfile/gitignore /etc/gitignore
 
-docker pull centos:centos6
+```
+
+
+
+## Build Docker Image
+
+build docker image
+
+```
+builddi
+```
+
+push your image
+
+```
+docker images
+#f283a336552b is ImageID
+docker tag f283a336552b registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0
+docker push registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0
 
 ```
 
-Add some alias to $HOME/.bash_profile in local machine.
+
+
+## Run In Your Docker Container
+
+login your container
 
 ```
-alias builddi="sh $HOME/dev/git/mysql-tools/env/dev/docker/builddockerdev.sh"
-alias builddc="docker run -itd --name mysql-dev -v $HOME/build/mysql/dev/git:/soft/mysql/source -v $HOME/dev/data:/data/mysql centos:centos6-mysql-dev-1.0"
-alias logind="docker exec -it mysql-dev /bin/bash"
-alias startdd="docker start `docker ps -a |grep centos:centos6-mysql-dev-1.0 |awk '{print $1}'`"
+logind
 ```
 
 download mysql source code
@@ -132,3 +189,6 @@ conn mysql demo(no password)
 ```
 connmysql
 ```
+
+
+
