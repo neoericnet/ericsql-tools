@@ -3,20 +3,13 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     libXp libXt libXtst glibc-common glibc-devel glibc glibc-headers compat-glibc-headers compat-glibc \
     glibc-static glibc-utils perl ncurses-devel libaio-devel numactl numactl-devel wget nc git openssl \
     openssl-libs openssl-devel man epel-release check boost-devel asio-devel readline-devel pam-devel \
-    perl-Env time rpmdevtools rpm-build libcurl-devel dos2unix tree ruby \
+    perl-Env time rpmdevtools rpm-build libcurl-devel dos2unix tree \
     && mkdir -p /root/soft/m4 \
     && cd /root/soft/m4 \
     && wget http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.gz \
     && tar xvf m4-1.4.18.tar.gz \
     && cd /root/soft/m4/m4-1.4.18 \
     && ./configure && make && make install \
-    && yum install ruby \
-    && gem sources -a http://mirrors.aliyun.com/rubygems/ \
-    && gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB \
-    && curl -sSL https://get.rvm.io | bash -s stable \
-    && source /etc/profile.d/rvm.sh \
-    && gem sources --remove https://rubygems.org/ \
-    && rvm install 2.6 \
     && mkdir -p /soft/mysql \
     && groupadd mysql \
     && useradd -d /soft/mysql -r -g mysql -s /bin/bash mysql \
