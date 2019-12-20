@@ -5,7 +5,7 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     openssl-libs openssl-devel man epel-release check boost-devel asio-devel readline-devel pam-devel \
     perl-Env time rpmdevtools rpm-build libcurl-devel dos2unix tree ruby \
     && mkdir -p /root/soft/m4 \
-    && /root/soft/m4 \
+    && cd /root/soft/m4 \
     && wget http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.gz \
     && tar xvf m4-1.4.18.tar.gz \
     && cd /root/soft/m4/m4-1.4.18 \
