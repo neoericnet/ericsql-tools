@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #check parameter, it is ut name
 utname=$1
 echo ut name:$utname
@@ -8,8 +8,8 @@ then
   exit
 fi
 #define vars
-source_path=/soft/mysql/source/mysql
-build_path=/soft/mysql/source/build/mysql
+source_path=$HOME/source/mysql
+build_path=$HOME/build/mysql
 ut_source_path=$source_path/unittest/gunit
 ut_build_path=$source_path/unittest/gunit
 include_build_path=$build_path/include

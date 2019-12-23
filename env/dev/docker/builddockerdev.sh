@@ -11,7 +11,7 @@ root_path=$HOME/dev
 user_name=$(git config --get user.name)
 git_user_email=$user_name@163.com
 docker_path=$root_path/docker
-dockerfile_path=$docker_path/dockerfile
+dockerfile_path=$docker_path/dockerfile/
 shell_path=$(cd "$(dirname "$0")"; pwd)
 tools_path=$(cd $shell_path/../../../; pwd)
 source_path=$root_path/git/
@@ -25,14 +25,14 @@ docker_container_name=mysql-dev
 #clean
 if [ -d "$docker_path" ]; then
   cd $docker_path
-  rm -rf dockerfile builddockerdev.sh gitconfig.sh profileconfig.sh
+  rm -rf dockerfile builddockerdev.sh Dockerfile
 fi
 #mkdir
 mkdir -p $docker_path
 mkdir -p $source_path
 mkdir -p $build_path
 mkdir -p $data_path
-mkdir -p $dockerfile_path/.ssh
+mkdir -p $dockerfile_path/ssh
 
 ##clean env
 set +e
@@ -77,13 +77,18 @@ echo 'echo "#find static lib .a path" >>/etc/profile' >> $dockerfile_path/profil
 echo 'echo export LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LIBRARY_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
 chmod 755 $dockerfile_path/profileconfig.sh
 #cp file
-cp -rf $HOME/.ssh/* $dockerfile_path/.ssh
 cp -rf $tools_path/env/dev/docker/dockerfile $docker_path
+mv $dockerfile_path/Dockerfile $docker_path/
+cp -rf $HOME/.ssh/* $dockerfile_path/ssh
 cp -rf $tools_path/3rd $dockerfile_path
-cd $dockerfile_path
-tar -xjf 3rd/gcc/gcc-4.8.5.tar.bz2
-tar -xvf 3rd/cmake/cmake-3.11.4.tar.gz
-tar -xvf 3rd/bison/bison-3.0.4.tar.gz
+cd $dockerfile_path/3rd/gcc/
+tar -xjf gcc-4.8.5.tar.bz2
+cd $dockerfile_path/3rd/cmake/
+tar -xvf cmake-3.11.4.tar.gz
+cd $dockerfile_path/3rd/bison/
+tar -xvf bison-3.0.4.tar.gz
+cd $dockerfile_path/3rd/gtest/
+unzip googletest-release-1.8.1.zip
 #build file
 #git config file
 #mysqldemo cnf file
@@ -91,8 +96,8 @@ if [ ! -f "$data_path/mysqldemo.cnf" ]; then
   cp -rf $tools_path/env/dev/docker/data/demo/mysqldemo.cnf $data_path/mysqldemo.cnf
 fi
 ##build images
-cd $dockerfile_path
-docker build -t $docker_image_version .
+cd $docker_path
+docker build --no-cache -t $docker_image_version .
 
 ##run container
 docker run -itd --name $docker_container_name -v $source_path:/soft/mysql/source -v $data_path:/data/mysql \
@@ -106,5 +111,5 @@ docker ps
 #clean
 if [ -d "$docker_path" ]; then
   cd $docker_path
-  rm -rf dockerfile builddockerdev.sh gitconfig.sh profileconfig.sh
+  rm -rf dockerfile Dockerfile
 fi
