@@ -46,7 +46,7 @@ tree -L 2
 
 Befor do it, you should install docker and git, and config git in your local machine.
 
-If your local os is os-x, you need to install docker-sync.
+If your local os is os-x, you need to install [docker-sync](https://docker-sync.readthedocs.io/en/latest/getting-started/installation.html#installation-osx).
 
 If your root work dir is $HOME/dev
 
@@ -109,7 +109,7 @@ Add some alias to $HOME/.bash_profile in local machine.
 
 ```
 alias builddi="sh $HOME/dev/git/mysql-tools/env/dev/docker/builddockerdev.sh"
-alias builddc="docker run -itd --name mysql-dev -v /soft/mysql/dev/git:/soft/mysql/source -v /soft/mysql/dev/data:/data/mysql registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0"
+alias builddc="docker run -itd --name mysql-dev -v $HOME/dev/git:/soft/mysql/source -v $HOME/dev/data:/data/mysql registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0"
 alias logind="docker exec -it mysql-dev /bin/bash"
 alias startdd="docker start `docker ps -a |grep mysql-dev |awk '{print $1}'`"
 ```
@@ -160,6 +160,8 @@ Note:
 ​		   If you need more privileges, please reconfigure your git account information.
 
 - The user:mysql don't has  password, you need to set it.
+- You need to config your local docker CPU to the appropriate number of cores.
+- You need to modify the mysql user file:$HOME/bin/env's repository to your own repository.
 
 ​     
 
@@ -210,6 +212,5 @@ conn mysql demo(no password)
 ```
 connmysql
 ```
-
 
 
