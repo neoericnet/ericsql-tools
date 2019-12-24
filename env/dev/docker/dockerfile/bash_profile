@@ -9,30 +9,31 @@ PATH=$HOME/bin:$PATH:.
 
 export PATH
 
-alias cdb="cdbin $HOME/bin"
-alias cdb="cd /soft/mysql/source/build"
-alias cdd="cd /data/mysql/"
+export DATA_PATH=/data/mysql/
+alias cds="cd $HOME/source"
+alias cdb="cd $HOME/build"
+alias cdd="cd $DATA_PATH"
 
-alias cddm="cd /data/mysql/mysqldemo"
+alias cddm="cd $DATA_PATH/mysqldemo"
 
-alias cdsm="cd /soft/mysql/source/mysql"
-alias cdsmt="cd /soft/mysql/source/mysql-tools"
-alias cdbm="cd /soft/mysql/source/build/mysql"
+alias cdsm="cd $HOME/source/mysql"
+alias cdsmt="cd $HOME/source/mysql-tools"
+alias cdbm="cd $HOME/build/mysql"
 
-export CLION_HOME=/soft/mysql/dev/clion/clion2019
+export CLION_HOME=$HOME/dev/clion/clion2019
 export PATH=$CLION_HOME/bin:$PATH:.
 alias cdc="cd $CLION_HOME"
 
-alias cdmut="cd /soft/mysql/source/mysql/unittest/gunit/"
+alias cdmut="cd $HOME/source/mysql/unittest/gunit/"
 
-alias cddmgr="cd /data/mysql/mgrdemo"
-alias cddm1="cd /data/mysql/mgrdemo/s1"
-alias cddm2="cd /data/mysql/mgrdemo/s2"
-alias cddm3="cd /data/mysql/mgrdemo/s3"
+alias cddmgr="cd $DATA_PATH/mgrdemo"
+alias cddm1="cd $DATA_PATH/mgrdemo/s1"
+alias cddm2="cd $DATA_PATH/mgrdemo/s2"
+alias cddm3="cd $DATA_PATH/mgrdemo/s3"
 
 
-alias cddrpl="cd /data/mysql/rpldemo"
-alias cddr1="cd /data/mysql/rpldemo/s1"
-alias cddr2="cd /data/mysql/rpldemo/s2"
+alias cddrpl="cd $DATA_PATH/rpldemo"
+alias cddr1="cd $DATA_PATH/rpldemo/s1"
+alias cddr2="cd $DATA_PATH/rpldemo/s2"
 
 umask 000
