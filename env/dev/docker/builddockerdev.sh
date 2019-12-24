@@ -17,6 +17,8 @@ tools_path=$(cd $shell_path/../../../; pwd)
 source_path=$root_path/git/
 build_path=$root_path/build/
 data_path=$root_path/data
+mysql_uid=$(id -u)
+mysql_gid=$(id -g)
 #version
 docker_image_version=$docker_image_repo:centos6-mysql-dev-$version
 docker_container_name=mysql-dev
@@ -102,6 +104,7 @@ if [ ! -f "$data_path/mysqldemo.cnf" ]; then
 fi
 ##build images
 cd $docker_path
+set -x
 docker build --no-cache -t $docker_image_version .
 
 ##run container
@@ -110,7 +113,9 @@ docker run -itd \
   -v $build_path:/soft/mysql/build \
   -v $source_path:/soft/mysql/source \
   -v $data_path:/data/mysql \
-  $docker_image_version
+  $docker_image_version $mysql_uid $mysql_gid
+
+set +x
 
 ##check
 docker images

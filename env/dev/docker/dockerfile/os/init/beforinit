@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+echo "begin to exec befor init!"
+/etc/init.d/changemysqlid.sh "$@"
+echo "exec befor init finish!"

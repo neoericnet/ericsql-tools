@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+/etc/init.d/beforinit "$@"
+#only execucte one command:exec, if there is others, don't execute it.
+exec "/bin/bash"

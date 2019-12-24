@@ -8,6 +8,8 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     && echo "Defaults logfile=/var/log/sudo.log" >> /etc/sudoers \
     && echo "local2.debug /var/log/sudo.log" >> /etc/rsyslog.conf \
     && echo "mysql ALL=(ALL) ALL" >> /etc/sudoers \
+    && cp -rf /root/dockerfiles/os/init/* /etc/init.d/ \
+    && chmod 755 /etc/init.d/* \
     && mkdir -p /root/soft/m4 \
     && cd /root/soft/m4 \
     && wget http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.gz \
@@ -59,3 +61,4 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     && make install \
     && rm -rf /root/dockerfiles/3rd/gcc \
     && yum clean packages
+ENTRYPOINT ["/etc/init.d/init"]
