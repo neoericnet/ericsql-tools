@@ -151,13 +151,17 @@ docker push registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql
 
 ## Run In Your Docker Container
 
+Note: the docker image and container use the ci acount by default, this account has read-only access only.
+
+​		   If you need more privileges, please reconfigure your git account information.
+
 build your docker container
 
 ```
 docker pull registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0
 mkdir $HOME/dev/data
 cp $HOME/dev/git/mysql-tools/env/dev/docker/data/demo/mysqldemo.cnf $HOME/dev/data
-buildc
+builddc
 ```
 
 login your container

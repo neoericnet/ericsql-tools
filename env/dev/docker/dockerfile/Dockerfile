@@ -50,5 +50,9 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     && ./bootstrap \
     && make -j$(getconf _NPROCESSORS_ONLN) \
     && make install \
+    && cd /root/dockerfiles/3rd/gtest/googletest-release-1.8.1 \
+    && cmake -DBUILD_SHARED_LIBS=ON \
+    && make \
+    && make install \
     && rm -rf /root/dockerfiles/3rd/gcc \
     && yum clean packages

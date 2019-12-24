@@ -8,8 +8,8 @@ echo buidl version=$version
 ##define vars
 #path
 root_path=$HOME/dev
-user_name=$(git config --get user.name)
-git_user_email=$user_name@163.com
+user_name=ercisql_ci
+git_user_email=$user_name@hotmail.com
 docker_path=$root_path/docker
 dockerfile_path=$docker_path/dockerfiles/
 shell_path=$(cd "$(dirname "$0")"; pwd)
@@ -79,7 +79,7 @@ chmod 755 $dockerfile_path/profileconfig.sh
 #cp file
 cp -rf $tools_path/env/dev/docker/dockerfile/* $docker_path/dockerfiles/
 mv $dockerfile_path/Dockerfile $docker_path/
-cp -rf $HOME/.ssh/* $dockerfile_path/ssh
+cp -rf $tools_path/ci/ssh/* $dockerfile_path/ssh
 cp -rf $tools_path/3rd $dockerfile_path
 cd $dockerfile_path/3rd/gcc/
 tar -xjf gcc-4.8.5.tar.bz2
