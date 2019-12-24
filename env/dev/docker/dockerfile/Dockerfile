@@ -22,7 +22,7 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     && cp -rf /root/dockerfile/bashrc /soft/mysql/ \
     && mkdir -p /soft/mysql/.ssh/ \
     && cp -rf /root/dockerfile/ssh/* /soft/mysql/.ssh/ \
-    && chown -R mysql:mysql /soft/mysql
+    && chown -R mysql:mysql /soft/mysql \
     && chmod -R 755 /soft/mysql/bin/ \
     && sh /soft/mysql/bin/gitconfig.sh \
     && chmod 600 /soft/mysql/.ssh/id_rsa \
