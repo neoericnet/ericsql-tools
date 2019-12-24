@@ -64,17 +64,22 @@ chmod 755 $dockerfile_path/gitconfig.sh
 #profile config file
 >$dockerfile_path/profileconfig.sh
 echo #!/bin/sh > $dockerfile_path/profileconfig.sh
-echo 'echo "#find .h file for gcc" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
-echo 'echo export C_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$C_INCLUDE_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo "#find .h file for gcc" >>/etc/profile' \
+  >> $dockerfile_path/profileconfig.sh
+echo 'echo export C_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$C_INCLUDE_PATH:. >>/etc/profile' \
+  >> $dockerfile_path/profileconfig.sh
 echo 'echo  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
 echo 'echo "#find .h file for g++" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
-echo 'echo export CPLUS_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$CPLUS_INCLUDE_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo export CPLUS_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$CPLUS_INCLUDE_PATH:. >>/etc/profile' \
+  >> $dockerfile_path/profileconfig.sh
 echo 'echo  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
 echo 'echo "#search .so path when execute program" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
-echo 'echo export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LD_LIBRARY_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LD_LIBRARY_PATH:. \
+  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
 echo 'echo  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
 echo 'echo "#find static lib .a path" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
-echo 'echo export LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LIBRARY_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
+echo 'echo export LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LIBRARY_PATH:. \
+  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
 chmod 755 $dockerfile_path/profileconfig.sh
 #cp file
 cp -rf $tools_path/env/dev/docker/dockerfile/* $docker_path/dockerfiles/
@@ -100,7 +105,11 @@ cd $docker_path
 docker build --no-cache -t $docker_image_version .
 
 ##run container
-docker run -itd --name $docker_container_name -v $build_path:/soft/mysql/build -v $source_path:/soft/mysql/source -v $data_path:/data/mysql \
+docker run -itd \
+  --name $docker_container_name \
+  -v $build_path:/soft/mysql/build \
+  -v $source_path:/soft/mysql/source \
+  -v $data_path:/data/mysql \
   $docker_image_version
 
 ##check
