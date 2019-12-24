@@ -24,6 +24,8 @@ The mysql-test-run.pl script is used to run the tests.
 |   |-- boost
 |   |-- cmake
 |   `-- gcc
+|-- ci
+|   `-- ssh
 |-- env
 |   `-- dev
 |-- LICENSE
@@ -151,9 +153,15 @@ docker push registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql
 
 ## Run In Your Docker Container
 
-Note: the docker image and container use the ci acount by default, this account has read-only access only.
+Note: 
+
+- The docker image and container use the ci acount by default, this account has read-only access only.
 
 ​		   If you need more privileges, please reconfigure your git account information.
+
+- The user:mysql don't has  password, you need to set it.
+
+​     
 
 build your docker container
 

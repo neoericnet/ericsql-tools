@@ -4,7 +4,10 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     libXp libXt libXtst glibc-common glibc-devel glibc glibc-headers compat-glibc-headers compat-glibc \
     glibc-static glibc-utils perl ncurses-devel libaio-devel numactl numactl-devel wget nc git openssl \
     openssl-libs openssl-devel man epel-release check boost-devel asio-devel readline-devel pam-devel \
-    perl-Env time rpmdevtools rpm-build libcurl-devel dos2unix tree \
+    perl-Env time rpmdevtools rpm-build libcurl-devel dos2unix tree sudo rsyslog \
+    && echo "Defaults logfile=/var/log/sudo.log" >> /etc/sudoers \
+    && echo "local2.debug /var/log/sudo.log" >> /etc/rsyslog.conf \
+    && echo "mysql ALL=(ALL) ALL" >> /etc/sudoers
     && mkdir -p /root/soft/m4 \
     && cd /root/soft/m4 \
     && wget http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.gz \
@@ -52,7 +55,7 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     && make install \
     && cd /root/dockerfiles/3rd/gtest/googletest-release-1.8.1 \
     && cmake -DBUILD_SHARED_LIBS=ON \
-    && make \
+    && make -j$(getconf _NPROCESSORS_ONLN) \
     && make install \
     && rm -rf /root/dockerfiles/3rd/gcc \
     && yum clean packages
