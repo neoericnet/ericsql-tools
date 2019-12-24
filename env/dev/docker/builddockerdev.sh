@@ -11,7 +11,7 @@ root_path=$HOME/dev
 user_name=$(git config --get user.name)
 git_user_email=$user_name@163.com
 docker_path=$root_path/docker
-dockerfile_path=$docker_path/dockerfile/
+dockerfile_path=$docker_path/dockerfiles/
 shell_path=$(cd "$(dirname "$0")"; pwd)
 tools_path=$(cd $shell_path/../../../; pwd)
 source_path=$root_path/git/
@@ -25,7 +25,7 @@ docker_container_name=mysql-dev
 #clean
 if [ -d "$docker_path" ]; then
   cd $docker_path
-  rm -rf dockerfile builddockerdev.sh Dockerfile
+  rm -rf dockerfiles builddockerdev.sh Dockerfile
 fi
 #mkdir
 mkdir -p $docker_path
@@ -77,7 +77,7 @@ echo 'echo "#find static lib .a path" >>/etc/profile' >> $dockerfile_path/profil
 echo 'echo export LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LIBRARY_PATH:. >>/etc/profile' >> $dockerfile_path/profileconfig.sh
 chmod 755 $dockerfile_path/profileconfig.sh
 #cp file
-cp -rf $tools_path/env/dev/docker/dockerfile $docker_path
+cp -rf $tools_path/env/dev/docker/dockerfile/* $docker_path/dockerfiles/
 mv $dockerfile_path/Dockerfile $docker_path/
 cp -rf $HOME/.ssh/* $dockerfile_path/ssh
 cp -rf $tools_path/3rd $dockerfile_path
@@ -111,5 +111,5 @@ docker ps
 #clean
 if [ -d "$docker_path" ]; then
   cd $docker_path
-  rm -rf dockerfile Dockerfile
+  rm -rf dockerfiles builddockerdev.sh Dockerfile
 fi
