@@ -15,7 +15,7 @@ dockerfile_path=$docker_path/dockerfiles/
 shell_path=$(cd "$(dirname "$0")"; pwd)
 tools_path=$(cd $shell_path/../../../; pwd)
 source_path=$root_path/git/
-build_path=$source_path/build/mysql
+build_path=$root_path/build/
 data_path=$root_path/data
 #version
 docker_image_version=$docker_image_repo:centos6-mysql-dev-$version
@@ -100,7 +100,7 @@ cd $docker_path
 docker build --no-cache -t $docker_image_version .
 
 ##run container
-docker run -itd --name $docker_container_name -v $source_path:/soft/mysql/source -v $data_path:/data/mysql \
+docker run -itd --name $docker_container_name -v $build_path:/soft/mysql/build -v $source_path:/soft/mysql/source -v $data_path:/data/mysql \
   $docker_image_version
 
 ##check

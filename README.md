@@ -109,7 +109,7 @@ Add some alias to $HOME/.bash_profile in local machine.
 
 ```
 alias builddi="sh $HOME/dev/git/mysql-tools/env/dev/docker/builddockerdev.sh"
-alias builddc="docker run -itd --name mysql-dev -v $HOME/dev/git:/soft/mysql/source -v $HOME/dev/data:/data/mysql registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0"
+alias builddc="docker run -itd --name mysql-dev -v $HOME/dev/build:/soft/mysql/build -v $HOME/dev/git:/soft/mysql/source -v $HOME/dev/data:/data/mysql registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0"
 alias logind="docker exec -it mysql-dev /bin/bash"
 alias startdd="docker start `docker ps -a |grep mysql-dev |awk '{print $1}'`"
 ```
@@ -169,7 +169,8 @@ build your docker container
 
 ```
 docker pull registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0
-mkdir $HOME/dev/data
+mkdir -p $HOME/dev/data
+mkdir -p $HOME/dev/build
 cp $HOME/dev/git/mysql-tools/env/dev/docker/data/demo/mysqldemo.cnf $HOME/dev/data
 builddc
 ```
