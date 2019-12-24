@@ -7,7 +7,7 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     perl-Env time rpmdevtools rpm-build libcurl-devel dos2unix tree sudo rsyslog \
     && echo "Defaults logfile=/var/log/sudo.log" >> /etc/sudoers \
     && echo "local2.debug /var/log/sudo.log" >> /etc/rsyslog.conf \
-    && echo "mysql ALL=(ALL) ALL" >> /etc/sudoers
+    && echo "mysql ALL=(ALL) ALL" >> /etc/sudoers \
     && mkdir -p /root/soft/m4 \
     && cd /root/soft/m4 \
     && wget http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.gz \
