@@ -9,29 +9,46 @@ PATH=$HOME/bin:$PATH:.
 
 export PATH
 
+#path define
+export DEV_PATH=$HOME/dev
+export SOURCE_PATH=$DEV_PATH/git
+export BUILD_PATH=$DEV_PATH/build
 export DATA_PATH=/data/mysql/
-alias cds="cd $HOME/source"
-alias cdb="cd $HOME/build"
-alias cdd="cd $DATA_PATH"
+export DOCKER_DATA_PATH=$DEV_PATH/data
+export DOCKER_TMP_PATH=$DEV_PATH/docker
 
-alias cddm="cd $DATA_PATH/mysqldemo"
-
-alias cdsm="cd $HOME/source/mysql"
-alias cdsmt="cd $HOME/source/mysql-tools"
-alias cdbm="cd $HOME/build/mysql"
-
-export CLION_HOME=$HOME/dev/clion/clion2019
+#clion
+export CLION_HOME=$DATA_PATH/clion/clion2019
 export PATH=$CLION_HOME/bin:$PATH:.
 alias cdc="cd $CLION_HOME"
 
-alias cdmut="cd $HOME/source/mysql/unittest/gunit/"
+#base alias
+alias cdd="cd $DEV_PATH"
+#source path
+alias cds="cd $SOURCE_PATH"
+alias cdsm="cd $SOURCE_PATH/mysql"
+alias cdsmt="cd $SOURCE_PATH/mysql-tools"
+#build path
+alias cdb="cd $BUILD_PATH"
+alias cdbm="cd $BUILD_PATH/mysql"
+alias cdbmt="cd $BUILD_PATH/mysql/debug/mysql-test"
+#docker path
+alias cdddd="cd $DOCKER_DATA_PATH"
+alias cdddt="cd $DOCKER_TMP_PATH"
 
+#ut
+alias cdmut="cd $SOURCE_PATH/mysql/unittest/gunit/"
+
+##data path
+alias cddp="cd $DATA_PATH"
+#single mysql
+alias cddm="cd $DATA_PATH/mysqldemo"
+#rpl
+alias cddrpl="cd $DATA_PATH/rpldemo"
+alias cddr1="cd $DATA_PATH/rpldemo/s1"
+alias cddr2="cd $DATA_PATH/rpldemo/s2"
+#mgr
 alias cddmgr="cd $DATA_PATH/mgrdemo"
 alias cddm1="cd $DATA_PATH/mgrdemo/s1"
 alias cddm2="cd $DATA_PATH/mgrdemo/s2"
 alias cddm3="cd $DATA_PATH/mgrdemo/s3"
-
-
-alias cddrpl="cd $DATA_PATH/rpldemo"
-alias cddr1="cd $DATA_PATH/rpldemo/s1"
-alias cddr2="cd $DATA_PATH/rpldemo/s2"

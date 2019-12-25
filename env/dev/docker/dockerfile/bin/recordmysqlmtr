@@ -20,7 +20,7 @@ then
   exit
 fi
 #define vars
-mtr_path=/soft/mysql/source/build/mysql/debug/mysql-test
+mtr_path=$BUILD_PATH/mysql/debug/mysql-test
 #command
 cd $mtr_path
 $mtr_path/mtr --record $localtestcasename

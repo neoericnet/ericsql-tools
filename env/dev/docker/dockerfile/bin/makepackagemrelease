@@ -1,6 +1,6 @@
 #!/bin/bash
-cd $HOME/build/mysql/mysqlrelease
+cd $BUILD_PATH/mysqlrelease
 rm -rf _CPack_Packages
 rm -rf *.tar.gz
-make package
+make package -j$(getconf _NPROCESSORS_ONLN)
 chown -R mysql:mysql *

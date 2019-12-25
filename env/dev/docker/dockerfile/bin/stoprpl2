@@ -1,4 +1,3 @@
 kill -9 `ps -ef |grep "mysqld" |grep "rpldemo2" |grep -v grep |awk '{print $2}'`
 sleep 1
 echo stop rpl2 success!
-

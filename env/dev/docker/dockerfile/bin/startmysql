@@ -1,2 +1,2 @@
-nohup /usr/sbin/mysqld --defaults-file=/data/mysql/mysqldemo.cnf >/dev/null 2>&1 &
+nohup $BUILD_PATH/mysql/debug/bin/mysqld --defaults-file=$DATA_PATH/mysqldemo.cnf >/dev/null 2>&1 &
 echo start mysql success!

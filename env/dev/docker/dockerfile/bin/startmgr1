@@ -1,3 +1,2 @@
-nohup /soft/mysql/source/build/mysql/debug/bin/mysqld --defaults-file=/data/mysql/mgrdemo/mgrdemo1.cnf >/dev/null 2>&1 &
+nohup $BUILD_PATH/mysql/debug/bin/mysqld --defaults-file=$DATA_PATH/mgrdemo/mgrdemo1.cnf >/dev/null 2>&1 &
 echo start builded mgr1 success!
-

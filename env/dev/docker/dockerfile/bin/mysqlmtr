@@ -20,7 +20,7 @@ then
   exit
 fi
 #define vars
-target_path=$HOME/build/mysql/debug
+target_path=$BUILD_PATH/mysql/debug
 mtr_path=mysql-test
 #command
 cd $target_path/$mtr_path

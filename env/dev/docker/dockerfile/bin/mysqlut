@@ -8,8 +8,8 @@ then
   exit
 fi
 #define vars
-source_path=$HOME/source/mysql
-build_path=$HOME/build/mysql
+source_path=$SOURCE_PATH/mysql
+build_path=$BUILD_PATH/mysql
 ut_source_path=$source_path/unittest/gunit
 ut_build_path=$source_path/unittest/gunit
 include_build_path=$build_path/include

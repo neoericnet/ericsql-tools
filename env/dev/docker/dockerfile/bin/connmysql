@@ -1,1 +1,1 @@
-$HOME/build/mysql/debug/bin/mysql -S/data/mysql/mysqldemo/mysql.sock -uroot -p
+$BUILD_PATH/mysql/debug/bin/mysql -S$DATA_PATH/mysqldemo/mysql.sock -uroot -p

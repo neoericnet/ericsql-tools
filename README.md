@@ -108,8 +108,9 @@ ssh-keygen -t rsa -C "neoericnet@163.com"
 Add some alias to $HOME/.bash_profile in local machine.
 
 ```
-alias builddi="sh $HOME/dev/git/mysql-tools/env/dev/docker/builddockerdev.sh"
-alias builddc="docker run -itd --name mysql-dev -v $HOME/dev/build:/soft/mysql/build -v $HOME/dev/git:/soft/mysql/source -v $HOME/dev/data:/data/mysql registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0"
+#dev docker build
+alias builddi="sh $SOURCE_PATH/mysql-tools/env/dev/docker/builddockerdev.sh"
+alias builddc="docker run -itd --name mysql-dev -v $BUILD_PATH:/soft/mysql/dev/build -v $SOURCE_PATH:/soft/mysql/dev/git -v $DOCKER_DATA_PATH:/data/mysql registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0"
 alias logind="docker exec -it mysql-dev /bin/bash"
 alias startdd="docker start `docker ps -a |grep mysql-dev |awk '{print $1}'`"
 ```

@@ -20,7 +20,7 @@ then
   exit
 fi
 #define vars
-source_path=/soft/mysql/source/mysql
+source_path=$SOURCE_PATH/mysql
 mtr_path=mysql-test/t/
 #command
 vi $source_path/$mtr_path/$localtestcasename.test

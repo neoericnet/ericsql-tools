@@ -2,5 +2,16 @@
 set -e
 cd $HOME/build/mysql/mysqlrelease
 ls |grep -v "^_CPack_Packages$" |xargs rm -rf
-cmake /soft/mysql/source/mysql -DBUILD_CONIFG=mysql_release -DCMAKE_BUILD_TYPE=RelWithDebInfo '-DCMAKE_C_FLAGS=-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOUCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic' '-DCMAKE_CXX_FLAGS=-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOUCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic' -DWITH_SYSTEMD=1 -DWITH_INNODB_MEMCACHED=1 -DFEATURE_SET=community -DWITH_EMBEDDED_SERVER=1 -DWITH_EMBEDDED_SHARED_LIBRARY=0 -DWITH_NUMA=ON '-DCOMPILATION_COMMENT=MySQL Community Server - (GPL)' -DMYSQL_SERVER_SUFFIX=
-
+cmake /soft/mysql/source/mysql -DBUILD_CONIFG=mysql_release \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  '-DCMAKE_C_FLAGS=-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOUCE=2
+    -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4
+    -grecord-gcc-switches -m64 -mtune=generic'  \
+  '-DCMAKE_CXX_FLAGS=-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOUCE=2
+  -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4
+  -grecord-gcc-switches -m64 -mtune=generic' \
+  -DWITH_SYSTEMD=1 -DWITH_INNODB_MEMCACHED=1 \
+  -DFEATURE_SET=community -DWITH_EMBEDDED_SERVER=1 \
+  -DWITH_EMBEDDED_SHARED_LIBRARY=0 -DWITH_NUMA=ON \
+  '-DCOMPILATION_COMMENT=MySQL Community Server - (GPL)' \
+  -DMYSQL_SERVER_SUFFIX=

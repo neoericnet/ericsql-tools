@@ -8,7 +8,7 @@ echo buidl version=$version
 ##define vars
 #path
 root_path=$HOME/dev
-user_name=ercisql_ci
+user_name=ericsql_ci
 git_user_email=$user_name@hotmail.com
 docker_path=$root_path/docker
 dockerfile_path=$docker_path/dockerfiles/
@@ -110,8 +110,8 @@ docker build --no-cache -t $docker_image_version .
 ##run container
 docker run -itd \
   --name $docker_container_name \
-  -v $build_path:/soft/mysql/build \
-  -v $source_path:/soft/mysql/source \
+  -v $build_path:/soft/mysql/dev/build \
+  -v $source_path:/soft/mysql/dev/git \
   -v $data_path:/data/mysql \
   $docker_image_version $mysql_uid $mysql_gid
 

@@ -1,1 +1,1 @@
-$HOME/build/mysql/maria/debug/bin/perror $1
+$BUILD_PATH/mysql/debug/bin/perror $1

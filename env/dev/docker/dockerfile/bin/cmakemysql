@@ -3,18 +3,19 @@ set -e
 
 ##prepare
 #prepare dir
-mkdir -p $HOME/build/mysql
-mkdir -p $HOME/build/3rd/boost
+mkdir -p $BUILD_PATH/mysql
+mkdir -p $BUILD_PATH/3rd/boost
 #prepare 3rd
-cd $HOME/build/3rd/boost
+cd $BUILD_PATH/3rd/boost
 if [ ! -d "boost_1_59_0" ]; then
   if [ ! -f "boost_1_59_0.tar.gz" ]; then
-    cp -rf $HOME/source/mysql-tools/3rd/boost/boost_1_59_0.tar.gz $HOME/build/3rd/boost
+    cp -rf $SOURCE_PATH/mysql-tools/3rd/boost/boost_1_59_0.tar.gz $BUILD_PATH/3rd/boost
   fi
   tar xvf boost_1_59_0.tar.gz
 fi
 
 #cmake
-cd $HOME/build/mysql
+cd $BUILD_PATH/mysql
 ls |grep -v "^debug$" |xargs rm -rf
-cmake $HOME/source/mysql -DCMAKE_INSTALL_PREFIX=/debug/ -DCMAKE_BUILD_TYPE=Debug -DWITH_INNODB_MEMCACHED=1 -DWITH_BOOST=$HOME/build/3rd/boost/boost_1_59_0
+cmake $SOURCE_PATH/mysql -DCMAKE_INSTALL_PREFIX=/debug/ -DCMAKE_BUILD_TYPE=Debug -DWITH_INNODB_MEMCACHED=1 \
+  -DWITH_BOOST=$BUILD_PATH/3rd/boost/boost_1_59_0
