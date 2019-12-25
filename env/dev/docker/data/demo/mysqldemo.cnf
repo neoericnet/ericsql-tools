@@ -17,7 +17,7 @@
 # join_buffer_size = 128M
 # sort_buffer_size = 2M
 # read_rnd_buffer_size = 2M
-basedir=/soft/mysql/source/build/mysql/debug
+basedir=/soft/mysql/dev/build/mysql/debug
 datadir=/data/mysql/mysqldemo
 socket=/data/mysql/mysqldemo/mysql.sock
 port=3306
@@ -27,7 +27,7 @@ symbolic-links=0
 
 log-error=/data/mysql/mysqldemo/error.log
 pid-file=/data/mysql/mysqldemo/mysqld.pid
-lc-messages-dir=/soft/mysql/source/build/mysql/debug/share
+lc-messages-dir=/soft/mysql/dev/build/mysql/debug/share
 
 #user param
 lower_case_table_names=1
