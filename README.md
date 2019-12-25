@@ -46,7 +46,7 @@ tree -L 2
 
 Befor do it, you should install docker and git, and config git in your local machine.
 
-If your local os is os-x, you need to install [docker-sync](https://docker-sync.readthedocs.io/en/latest/getting-started/installation.html#installation-osx).
+If your local os is os-x, you need to install [docker-sync](https://docker-sync.readthedocs.io/en/latest/getting-started/installation.html#installation-osx).You need to expand your docker config, if resources allow, it is recommended to config as 10cores/8GBMemory/2GBSwap
 
 Init .bash_profile file, the file content in [mysql-tools](http://git.eric.com/mysqlkernel/ericsql-tools/blob/master/env/dev/docker/dockerfile/bash_profile)
 
