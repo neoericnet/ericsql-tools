@@ -36,7 +36,7 @@ The mysql-test-run.pl script is used to run the tests.
 Node: you can use command to get the source tree:
 
 ```
-cd $HOME/dev/git/mysql-tools
+cd $SOURCE_PATH/mysql-tools
 tree -L 2
 ```
 
@@ -48,11 +48,13 @@ Befor do it, you should install docker and git, and config git in your local mac
 
 If your local os is os-x, you need to install [docker-sync](https://docker-sync.readthedocs.io/en/latest/getting-started/installation.html#installation-osx).
 
+Init .bash_profile file, the file content in [mysql-tools](http://git.eric.com/mysqlkernel/ericsql-tools/blob/master/env/dev/docker/dockerfile/bash_profile)
+
 If your root work dir is $HOME/dev
 
 ```
-mkdir -p $HOME/dev/git
-mkdir -p $HOME/dev/docker
+mkdir -p $SOURCE_PATH
+mkdir -p $DOCKER_TMP_PATH
 ```
 
 If your machine is mac, we need to install docker-sync.In $HOME/dev/docker dir, add new file:docker-sync.yml
@@ -125,8 +127,8 @@ Init git dir:
 
 ```
 #in your work directory
-mkdir -p $HOME/dev/git
-cd $HOME/dev/git
+mkdir -p $SOURCE_PATH
+cd $SOURCE_PATH
 git clone git@git.eric.com:mysqlkernel/ericsql-tools.git mysql-tools
 cp -f mysql-tools/env/dev/docker/dockerfile/gitignore /etc/gitignore
 
@@ -172,9 +174,9 @@ build your docker container
 
 ```
 docker pull registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0
-mkdir -p $HOME/dev/data
-mkdir -p $HOME/dev/build
-cp $HOME/dev/git/mysql-tools/env/dev/docker/data/demo/mysqldemo.cnf $HOME/dev/data
+mkdir -p $DOCKER_DATA_PATH
+mkdir -p $BUILD_PATH
+cp $SOURCE_PATH/mysql-tools/env/dev/docker/data/demo/mysqldemo.cnf $DOCKER_DATA_PATH
 builddc
 ```
 
@@ -202,7 +204,7 @@ cmakemysql && makemysql && makeinstallmysql
 init mysqldemo database
 
 ```
-/soft/mysql/source/build/mysql/debug/bin/mysqld --defaults-file=/data/mysql/mysqldemo.cnf --initialize --user=mysql
+$BUILD_PATH/mysql/debug/bin/mysqld --defaults-file=$DATA_PATH/mysqldemo.cnf --initialize --user=mysql
 ```
 
 start mysql demo
