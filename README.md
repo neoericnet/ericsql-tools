@@ -109,10 +109,12 @@ Add some alias to $HOME/.bash_profile in local machine.
 
 ```
 #dev docker build
+export DEV_IMAGE_TAG=registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0
+export DEV_CONTAINER_NAME=mysql-dev
 alias builddi="sh $SOURCE_PATH/mysql-tools/env/dev/docker/builddockerdev.sh"
-alias builddc="docker run -itd --name mysql-dev -v $BUILD_PATH:/soft/mysql/dev/build -v $SOURCE_PATH:/soft/mysql/dev/git -v $DOCKER_DATA_PATH:/data/mysql registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0 $(id -u) $(id -g)"
-alias logind="docker exec -it mysql-dev /bin/bash"
-alias startdd="docker start `docker ps -a |grep mysql-dev |awk '{print $1}'`"
+alias builddc="docker run -itd --name $DEV_CONTAINER_NAME -v $BUILD_PATH:/soft/mysql/dev/build -v $SOURCE_PATH:/soft/mysql/dev/git -v $DOCKER_DATA_PATH:/data/mysql $DEV_IMAGE_TAG $(id -u) $(id -g)"
+alias logind="docker exec -it $DEV_CONTAINER_NAME /bin/bash"
+alias startdd="docker start `docker ps -a |grep $DEV_CONTAINER_NAME |awk '{print $1}'`"
 ```
 
 source ~/.bash_profile
