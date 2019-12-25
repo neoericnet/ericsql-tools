@@ -35,5 +35,3 @@ alias cddm3="cd $DATA_PATH/mgrdemo/s3"
 alias cddrpl="cd $DATA_PATH/rpldemo"
 alias cddr1="cd $DATA_PATH/rpldemo/s1"
 alias cddr2="cd $DATA_PATH/rpldemo/s2"
-
-umask 000
