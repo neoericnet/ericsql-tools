@@ -5,17 +5,34 @@ set -e
 #prepare dir
 mkdir -p $BUILD_PATH/mysql
 mkdir -p $BUILD_PATH/3rd/boost
+mkdir -p $BUILD_PATH/3rd/gtest
 #prepare 3rd
+#prepare boost
 cd $BUILD_PATH/3rd/boost
-if [ ! -d "boost_1_59_0" ]; then
-  if [ ! -f "boost_1_59_0.tar.gz" ]; then
-    cp -rf $SOURCE_PATH/mysql-tools/3rd/boost/boost_1_59_0.tar.gz $BUILD_PATH/3rd/boost
+BOOST_NAME=boost_1_59_0
+BOOST_COMPRESSION_TYPE=tar.gz
+if [ ! -d "${BOOST_NAME}" ]; then
+  if [ ! -f "${BOOST_NAME}.${BOOST_COMPRESSION_TYPE}" ]; then
+    cp -rf $SOURCE_PATH/mysql-tools/3rd/boost/${BOOST_NAME}.${BOOST_COMPRESSION_TYPE} $BUILD_PATH/3rd/boost
   fi
-  tar xvf boost_1_59_0.tar.gz
+  unzip ${BOOST_NAME}.${BOOST_COMPRESSION_TYPE}
+fi
+#prepare gtest
+cd $BUILD_PATH/3rd/gtest
+GTEST_NAME=googletest-release-1.8.0
+GTEST_COMPRESSION_TYPE=zip
+if [ ! -d "${GTEST_NAME}" ]; then
+  if [ ! -f "${GTEST_NAME}.${GTEST_COMPRESSION_TYPE}" ]; then
+    cp -rf $SOURCE_PATH/mysql-tools/3rd/gtest/${GTEST_NAME}.${GTEST_COMPRESSION_TYPE} $BUILD_PATH/3rd/gtest
+  fi
+  unzip ${GTEST_NAME}.${GTEST_COMPRESSION_TYPE}
 fi
 
 #cmake
 cd $BUILD_PATH/mysql
 ls |grep -v "^debug$" |xargs rm -rf
-cmake $SOURCE_PATH/mysql -DCMAKE_INSTALL_PREFIX=/debug/ -DCMAKE_BUILD_TYPE=Debug -DWITH_INNODB_MEMCACHED=1 \
-  -DWITH_BOOST=$BUILD_PATH/3rd/boost/boost_1_59_0
+cmake $SOURCE_PATH/mysql -DCMAKE_INSTALL_PREFIX=/debug/ \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -DWITH_INNODB_MEMCACHED=1 \
+  -DWITH_BOOST=$BUILD_PATH/3rd/boost/boost_1_59_0 \
+  -DWITH_UNIT_TESTS=1
