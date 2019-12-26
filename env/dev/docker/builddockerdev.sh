@@ -87,15 +87,16 @@ chmod 755 $dockerfile_path/profileconfig.sh
 cp -rf $tools_path/env/dev/docker/dockerfile/* $docker_path/dockerfiles/
 mv $dockerfile_path/Dockerfile $docker_path/
 cp -rf $tools_path/ci/ssh/* $dockerfile_path/ssh
-cp -rf $tools_path/3rd $dockerfile_path
+#copy 3rd
+cp -rf $tools_path/3rd/gcc $dockerfile_path
+cp -rf $tools_path/3rd/cmake $dockerfile_path
+cp -rf $tools_path/3rd/bison $dockerfile_path
 cd $dockerfile_path/3rd/gcc/
 tar -xjf gcc-4.8.5.tar.bz2
 cd $dockerfile_path/3rd/cmake/
 tar -xvf cmake-3.11.4.tar.gz
 cd $dockerfile_path/3rd/bison/
 tar -xvf bison-3.0.4.tar.gz
-cd $dockerfile_path/3rd/gtest/
-unzip googletest-release-1.8.1.zip
 #build file
 #git config file
 #mysqldemo cnf file

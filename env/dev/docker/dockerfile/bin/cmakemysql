@@ -34,6 +34,6 @@ ls |grep -v "^debug$" |xargs rm -rf
 cmake $SOURCE_PATH/mysql -DCMAKE_INSTALL_PREFIX=/debug/ \
   -DCMAKE_BUILD_TYPE=Debug \
   -DWITH_INNODB_MEMCACHED=1 \
-  -DWITH_BOOST=$BUILD_PATH/3rd/boost/boost_1_59_0 \
+  -DWITH_BOOST=$BUILD_PATH/3rd/boost/${BOOST_NAME} \
   -DWITH_UNIT_TESTS=1 \
-  -DWITH_GMOCK=$BUILD_PATH/3rd/gtest/gtest-1.8.0
+  -DWITH_GMOCK=$BUILD_PATH/3rd/gtest/
