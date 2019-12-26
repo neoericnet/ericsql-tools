@@ -35,6 +35,7 @@ mkdir -p $source_path
 mkdir -p $build_path
 mkdir -p $data_path
 mkdir -p $dockerfile_path/ssh
+mkdir -p $dockerfile_path/3rd
 
 ##clean env
 set +e
