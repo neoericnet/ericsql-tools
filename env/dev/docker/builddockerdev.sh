@@ -89,9 +89,9 @@ cp -rf $tools_path/env/dev/docker/dockerfile/* $docker_path/dockerfiles/
 mv $dockerfile_path/Dockerfile $docker_path/
 cp -rf $tools_path/ci/ssh/* $dockerfile_path/ssh
 #copy 3rd
-cp -rf $tools_path/3rd/gcc $dockerfile_path
-cp -rf $tools_path/3rd/cmake $dockerfile_path
-cp -rf $tools_path/3rd/bison $dockerfile_path
+cp -rf $tools_path/3rd/gcc $dockerfile_path/3rd/
+cp -rf $tools_path/3rd/cmake $dockerfile_path/3rd/
+cp -rf $tools_path/3rd/bison $dockerfile_path/3rd/
 cd $dockerfile_path/3rd/gcc/
 tar -xjf gcc-4.8.5.tar.bz2
 cd $dockerfile_path/3rd/cmake/
