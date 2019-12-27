@@ -149,8 +149,8 @@ push your image
 ```
 docker images
 #f283a336552b is ImageID
-docker tag f283a336552b registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0
-docker push registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0
+docker tag f283a336552b ${DEV_IMAGE_TAG}
+docker push ${DEV_IMAGE_TAG}
 
 ```
 
@@ -173,7 +173,7 @@ Note:
 build your docker container
 
 ```
-docker pull registry.cn-hangzhou.aliyuncs.com/ericdemo/mysqlkernel:centos6-mysql-dev-1.0
+docker pull ${DEV_IMAGE_TAG}
 mkdir -p $DOCKER_DATA_PATH
 mkdir -p $BUILD_PATH
 cp $SOURCE_PATH/mysql-tools/env/dev/docker/data/demo/mysqldemo.cnf $DOCKER_DATA_PATH
