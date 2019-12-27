@@ -1,0 +1,3 @@
+#!/bin/bash
+cd $BUILD_PATH/mysql
+make test-unit
