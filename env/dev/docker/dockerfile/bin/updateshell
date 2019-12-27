@@ -5,16 +5,13 @@ export SHELL_PATH=$(dirname $0; pwd)
 source $HOME/bin/env
 
 #clone mysql-tools
-cd $HOME/source
+cd $SOURCE_PATH
 if [ ! -d "mysql-tools" ]; then
   git clone $mysql_tools_repos mysql-tools
 else
-  cd mysql-tools
+  cd $SOURCE_PATH/mysql-tools
   git pull
 fi
-cd $HOME/source
-chmod 777 $SOURCE_PATH/mysql-tools
 
 cp -rf $SOURCE_PATH/mysql-tools/env/dev/docker/dockerfile/bin/* $HOME/bin/
-chmod -R 777 $HOME/bin
-
+chmod -R 755 $HOME/bin
