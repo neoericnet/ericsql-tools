@@ -18,7 +18,7 @@ export DOCKER_DATA_PATH=$DEV_PATH/data
 export DOCKER_TMP_PATH=$DEV_PATH/docker
 
 #clion
-export CLION_HOME=$DATA_PATH/clion/clion2019
+export CLION_HOME=$DEV_PATH/clion/clion2019
 export PATH=$CLION_HOME/bin:$PATH:.
 alias cdc="cd $CLION_HOME"
 
