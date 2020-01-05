@@ -129,7 +129,7 @@ Init git dir:
 #in your work directory
 mkdir -p $SOURCE_PATH
 cd $SOURCE_PATH
-git clone git@git.eric.com:mysqlkernel/ericsql-tools.git mysql-tools
+git clone ssh://git@git.eric.com:2222/mysqlkernel/ericsql-tools.git mysql-tools
 cp -f mysql-tools/env/dev/docker/dockerfile/gitignore /etc/gitignore
 
 ```

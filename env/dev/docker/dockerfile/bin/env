@@ -2,6 +2,6 @@
 
 ##define repositories
 #mysql
-mysql_repos=git@192.168.168.74:mysqlkernel/ericsql.git
+mysql_repos=ssh://git@git.eric.com:2222/mysqlkernel/ericsql.git
 #mysql-tools
-mysql_tools_repos=git@192.168.168.74:mysqlkernel/ericsql-tools.git
+mysql_tools_repos=ssh://git@git.eric.com:2222/mysqlkernel/ericsql-tools.git
