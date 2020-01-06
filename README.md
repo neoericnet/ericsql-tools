@@ -48,7 +48,7 @@ Befor do it, you should install docker and git, and config git in your local mac
 
 If your local os is os-x, you need to install [docker-sync](https://docker-sync.readthedocs.io/en/latest/getting-started/installation.html#installation-osx).You need to expand your docker config, if resources allow, it is recommended to config as 10cores/8GBMemory/2GBSwap
 
-Init .bash_profile file, the file content in [mysql-tools](http://git.eric.com/mysqlkernel/ericsql-tools/blob/master/env/dev/docker/dockerfile/bash_profile)
+Init .bashrc file, the file content in [mysql-tools](http://git.eric.com/mysqlkernel/ericsql-tools/blob/master/env/dev/docker/dockerfile/bashrc)
 
 If your root work dir is $HOME/dev
 
@@ -107,7 +107,7 @@ ssh-keygen -t rsa -C "neoericnet@163.com"
 
 
 
-Add some alias to $HOME/.bash_profile in local machine.
+Add some alias to $HOME/.bashrc in local machine.
 
 ```
 #dev docker build
@@ -119,7 +119,7 @@ alias logind="docker exec -it $DEV_CONTAINER_NAME /bin/bash"
 alias startdd="docker start `docker ps -a |grep $DEV_CONTAINER_NAME |awk '{print $1}'`"
 ```
 
-source ~/.bash_profile
+source ~/.bashrc
 
 
 
