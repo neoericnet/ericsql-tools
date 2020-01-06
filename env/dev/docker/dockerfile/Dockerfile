@@ -48,10 +48,10 @@ RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel 
     && ln -s /usr/local/bin/gcc /usr/local/bin/cc \
     && update-alternatives --install /usr/bin/gcc gcc /usr/local/bin/x86_64-unknown-linux-gnu-gcc 200 \
     && sh /soft/mysql/bin/profileconfig.sh \
-    && export C_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$C_INCLUDE_PATH:. \
+    && export C_INCLUDE_PATH=/usr/local/include:/usr/local/include/gtest:$C_INCLUDE_PATH:. \
     && export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LD_LIBRARY_PATH:. \
     && export LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/lib:/lib64:$LIBRARY_PATH:. \
-    && export CPLUS_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$CPLUS_INCLUDE_PATH:. \
+    && export CPLUS_INCLUDE_PATH=/usr/local/include:/usr/local/include/gtest:$CPLUS_INCLUDE_PATH:. \
     && cd /root/dockerfiles/3rd/cmake/cmake-3.11.4 \
     && ./bootstrap \
     && make -j$(getconf _NPROCESSORS_ONLN) \
