@@ -3,7 +3,7 @@
 export SHELL_PATH=$(dirname $0; pwd)
 source $HOME/bin/env
 
-cd $HOME/source
+cd $SOURCE_PATH
 #clone mysql
 if [ ! -d "mysql" ]; then
   git clone $mysql_repos mysql
@@ -13,7 +13,7 @@ else
 fi
 
 #clone mysql-tools
-cd $HOME/source
+cd $SOURCE_PATH
 if [ ! -d "mysql-tools" ]; then
   git clone $mysql_tools_repos mysql-tools
 else
