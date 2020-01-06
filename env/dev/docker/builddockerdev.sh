@@ -39,9 +39,9 @@ mkdir -p $dockerfile_path/3rd
 
 ##clean env
 set +e
-chmod 777 $source_path
-chmod -R 777 $build_path
-chmod -R 777 $data_path
+chmod 755 $source_path
+chmod -R 755 $build_path
+chmod -R 755 $data_path
 chmod 755 $data_path/*.cnf
 docker stop $docker_container_name
 docker rm -v $docker_container_name
