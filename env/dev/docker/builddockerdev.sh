@@ -69,11 +69,11 @@ chmod 755 $dockerfile_path/gitconfig.sh
 echo #!/bin/sh > $dockerfile_path/profileconfig.sh
 echo 'echo "#find .h file for gcc" >>/etc/profile' \
   >> $dockerfile_path/profileconfig.sh
-echo 'echo export C_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$C_INCLUDE_PATH:. >>/etc/profile' \
+echo 'echo export C_INCLUDE_PATH=/usr/local/include:/usr/local/include/gtest:$C_INCLUDE_PATH:. >>/etc/profile' \
   >> $dockerfile_path/profileconfig.sh
 echo 'echo  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
 echo 'echo "#find .h file for g++" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
-echo 'echo export CPLUS_INCLUDE_PATH=/usr/include:/usr/local/include/gtest:$CPLUS_INCLUDE_PATH:. >>/etc/profile' \
+echo 'echo export CPLUS_INCLUDE_PATH=/usr/local/include:/usr/local/include/gtest:$CPLUS_INCLUDE_PATH:. >>/etc/profile' \
   >> $dockerfile_path/profileconfig.sh
 echo 'echo  >>/etc/profile' >> $dockerfile_path/profileconfig.sh
 echo 'echo "#search .so path when execute program" >>/etc/profile' >> $dockerfile_path/profileconfig.sh
