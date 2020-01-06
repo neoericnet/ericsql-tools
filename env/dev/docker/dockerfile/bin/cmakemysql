@@ -15,7 +15,7 @@ if [ ! -d "${BOOST_NAME}" ]; then
   if [ ! -f "${BOOST_NAME}.${BOOST_COMPRESSION_TYPE}" ]; then
     cp -rf $SOURCE_PATH/mysql-tools/3rd/boost/${BOOST_NAME}.${BOOST_COMPRESSION_TYPE} $BUILD_PATH/3rd/boost
   fi
-  unzip ${BOOST_NAME}.${BOOST_COMPRESSION_TYPE}
+  tar xvf ${BOOST_NAME}.${BOOST_COMPRESSION_TYPE}
 fi
 #prepare gtest
 cd $BUILD_PATH/3rd/gtest
