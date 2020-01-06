@@ -1,0 +1,59 @@
+# For advice on how to change settings please see
+# http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html
+
+[mysqld]
+#
+# Remove leading # and set to the amount of RAM for the most important data
+# cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
+# innodb_buffer_pool_size = 128M
+#
+# Remove leading # to turn on a very important data integrity option: logging
+# changes to the binary log between backups.
+# log_bin
+#
+# Remove leading # to set options mainly useful for reporting servers.
+# The server defaults are faster for transactions and fast SELECTs.
+# Adjust sizes as needed, experiment to find the optimal values.
+# join_buffer_size = 128M
+# sort_buffer_size = 2M
+# read_rnd_buffer_size = 2M
+basedir=/soft/mysql/dev/build/mysql/debug
+datadir=/data/mysql/mgrdemo/s1
+socket=/data/mysql/mgrdemo/s1/mysql.sock
+port=4306
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+log-error=/data/mysql/mgrdemo/s1/error.log
+pid-file=/data/mysql/mgrdemo/s1/mysqld.pid
+lc-messages-dir=/soft/mysql/dev/build/mysql/debug/share
+
+#user param
+lower_case_table_names=1
+character_set_server = utf8
+init_connect='SET NAMES utf8'
+
+secure_file_priv = 
+
+#mgr
+server_id=1
+gtid_mode=ON
+enforce_gtid_consistency=ON
+master_info_repository=TABLE
+relay_log_info_repository=TABLE
+binlog_checksum=NONE
+log_slave_updates=ON
+log_bin=binlog
+binlog_format=ROW
+#set gr config
+transaction_write_set_extraction=XXHASH64
+loose-group-replication-group_name="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+loose-group-replication-start_on_boot=off
+loose-group-replication-local_address= "192.168.168.128:24901"
+loose-group-replication-group_seeds= "192.168.168.128:24901,192.168.168.128:24902,192.168.168.128:24903"
+loose-group-replication-bootstrap_group=off
+
+[client]
+default-character-set = utf8
+

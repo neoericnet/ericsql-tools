@@ -1,0 +1,71 @@
+# Example mysql config file.
+# You can copy this to one of:
+# /etc/my.cnf to set global options,
+# /mysql-data-dir/my.cnf to get server specific options or
+# ~/my.cnf for user specific options.
+# 
+# One can use all long options that the program supports.
+# Run the program with --help to get a list of available options
+
+# This will be passed to all mysql clients
+[client]
+#password=my_password
+#port=3306
+#socket=/tmp/mysql.sock
+default-character-set = utf8
+
+# Here is entries for some specific programs
+# The following values assume you have at least 32M ram
+
+# The MySQL server
+[mysqld]
+port=3506
+socket=/data/mysql/mariademo/mysql.sock
+temp-pool
+
+log_error=/data/mysql/mariademo/mysqld.log
+pid-file=/data/mysql/mariademo/mysqld.pid
+
+character_set_server = utf8
+init_connect='SET NAMES utf8'
+
+#binlog
+log_bin=binlog
+binlog_format=ROW
+
+
+# The following three entries caused mysqld 10.0.1-MariaDB (and possibly other versions) to abort...
+# skip-locking
+# set-variable  = key_buffer=16M
+# set-variable  = thread_cache=4
+
+loose-innodb_data_file_path = ibdata1:1000M
+loose-mutex-deadlock-detector
+gdb
+
+######### Fix the two following paths
+
+# Where you want to have your database
+datadir=/data/mysql/mariademo
+
+# Where you have your mysql/MariaDB source + sql/share/english
+language=/soft/mysql/dev/build/maria/sql/share/english
+
+########## One can also have a different path for different versions, to simplify development.
+
+[mariadb-10.1]
+lc-messages-dir=/soft/mysql/dev/build/maria/sql/share
+
+[mariadb-10.2]
+lc-messages-dir=/soft/mysql/dev/build/maria/sql/share
+
+[mysqldump]
+quick
+set-variable = max_allowed_packet=16M
+
+[mysql]
+no-auto-rehash
+
+[myisamchk]
+set-variable= key_buffer=128M
+

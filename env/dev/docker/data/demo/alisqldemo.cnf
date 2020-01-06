@@ -1,0 +1,28 @@
+[mysqld]
+basedir=/soft/mysql/dev/build/alisql/debug
+datadir=/data/mysql/alisqldemo
+socket=/data/mysql/alisqldemo/mysql.sock
+port=3606
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+log-error=/data/mysql/alisqldemo/error.log
+pid-file=/data/mysql/alisqldemo/mysqld.pid
+lc-messages-dir=/soft/mysql/dev/build/alisql/debug/share
+
+#user param
+lower_case_table_names=1
+character_set_server = utf8
+init_connect='SET NAMES utf8'
+
+secure_file_priv =
+
+#bin log
+log-bin=mysql-bin
+binlog-format=ROW
+server_id=1
+
+[client]
+default-character-set = utf8
+
