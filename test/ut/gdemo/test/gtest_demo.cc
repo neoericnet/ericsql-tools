@@ -10,9 +10,8 @@ TEST(BasicTest, Sum)
     EXPECT_EQ(sum, 15);
 }
 
-int main(int argc, char *argc[])
+int main(int argc, char **argv)
 {
-    ::testing::InitGoogle(&argc, argv);
-    ::testing::AddGlobalTestEnvironment(new TestEnvironment);
+    ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
