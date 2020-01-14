@@ -1,8 +1,0 @@
-cmake_minimum_required(VERSION 2.8)
-PROJECT(ericsql-tools)
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
-add_executable(gdemo test/gtest_demo.cc)
-target_link_libraries(gdemo ${GTEST_BOTH_LIBRARIES})
-add_test(Test gdemo)
-enable_testing()
