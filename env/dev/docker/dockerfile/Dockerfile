@@ -1,6 +1,6 @@
 FROM centos:centos6
 COPY dockerfiles /root/dockerfiles/
-RUN yum install -y gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel libicu libicu-devel \
+RUN yum install -y gdb gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-devel libicu libicu-devel \
     libXp libXt libXtst glibc-common glibc-devel glibc glibc-headers compat-glibc-headers compat-glibc \
     glibc-static glibc-utils perl ncurses-devel libaio-devel numactl numactl-devel wget nc git openssl \
     openssl-libs openssl-devel man epel-release check boost-devel asio-devel readline-devel pam-devel \
