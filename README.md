@@ -94,6 +94,7 @@ git config --system color.branch auto
 git config --system color.interactive auto
 git config --system http.sslVerify false
 git config --system credential.helper cache
+git config --system core.editor vi
 git config --system user.name "neoericnet"
 git config --system user.email neoericnet@163.com
 git config --system core.excludesfile /etc/gitignore
