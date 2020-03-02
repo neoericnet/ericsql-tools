@@ -1,0 +1,31 @@
+#!/bin/bash
+#stop
+stopmysql
+set -ex
+##prepare
+DEMO_DATA_PATH=${DATA_PATH}/mysqldemo
+#prepare dir
+rm -rf ${DEMO_DATA_PATH}
+mkdir -p ${DEMO_DATA_PATH}
+#prepare config file
+if [ ! -f "${DEMO_DATA_PATH}/mysqldemo.cnf" ]; then
+ cp ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/mysqldemo.cnf ${DEMO_DATA_PATH}/../
+fi
+#prepare db
+${BUILD_PATH}/mysql/debug/bin/mysqld --defaults-file=${DEMO_DATA_PATH}/../mysqldemo.cnf --initialize --user=mysql --utility-user-password=test
+#prepare password
+s1_password=$(grep 'temporary password' ${DEMO_DATA_PATH}/error.log)
+s1_password=${s1_password:0-12:12}
+#start 3 dbs
+startbuildmysql
+#config mgr
+#
+#cmd="${BUILD_PATH}/mysql/debug/bin/mysql "
+#cmd="${cmd} -S${DEMO_DATA_PATH}/mysql.sock "
+#cmd="${cmd} --connect-expired-password "
+#cmd="${cmd} -uroot -p${s1_password} "
+#cmd="${cmd} -e ‘source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/initmysqldemo.sql’"
+#$($cmd)
+#eval $cmd
+$BUILD_PATH/mysql/debug/bin/mysqladmin -S${DEMO_DATA_PATH}/mysql.sock -uroot -p${s1_password} password 'test'
+$BUILD_PATH/mysql/debug/bin/mysql -S${DEMO_DATA_PATH}/mysql.sock --connect-expired-password -uroot -ptest -e "source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/initmysqldemo.sql"

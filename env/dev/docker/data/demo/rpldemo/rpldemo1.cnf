@@ -34,7 +34,8 @@ lower_case_table_names=1
 character_set_server = utf8
 init_connect='SET NAMES utf8'
 
-secure_file_priv = 
+secure_file_priv =
+#skip-grant-tables
 
 #rpl
 server_id=1

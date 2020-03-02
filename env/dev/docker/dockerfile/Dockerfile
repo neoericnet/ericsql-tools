@@ -60,6 +60,11 @@ RUN yum install -y gdb gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-de
     && cmake -DBUILD_SHARED_LIBS=ON \
     && make \
     && make install \
+    && cd /root/dockerfiles/3rd/gdb/gdb-7.6.1 \
+    && ./configure \
+    && make \
+    && make install \
+    && cp gdb/gdb /usr/bin/gdb \
     && rm -rf /root/dockerfiles/3rd/gcc \
     && yum clean packages
 ENTRYPOINT ["/etc/init.d/init"]

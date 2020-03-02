@@ -35,7 +35,7 @@ character_set_server = utf8
 init_connect='SET NAMES utf8'
 
 secure_file_priv = 
-skip-grant-tables
+#skip-grant-tables
 
 #bin log
 log-bin=mysql-bin

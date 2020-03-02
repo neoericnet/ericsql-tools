@@ -1,2 +1,2 @@
 $BUILD_PATH/mysqlrelease/_CPack_Packages/Linux/TGZ/mysql-5.7.22-linux-x86_64/bin/mysql \
-    -S$DATA_PATH/mysqldemo/mysql.sock -uroot -p
+    -S$DATA_PATH/mysqldemo/mysql.sock -uroot -ptest

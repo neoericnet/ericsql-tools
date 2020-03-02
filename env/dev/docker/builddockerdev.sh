@@ -42,7 +42,6 @@ set +e
 chmod 755 $source_path
 chmod -R 755 $build_path
 chmod -R 755 $data_path
-chmod 755 $data_path/*.cnf
 docker stop $docker_container_name
 docker rm -v $docker_container_name
 docker rmi $docker_image_version
@@ -93,6 +92,7 @@ cp -rf $tools_path/3rd/gcc $dockerfile_path/3rd/
 cp -rf $tools_path/3rd/cmake $dockerfile_path/3rd/
 cp -rf $tools_path/3rd/bison $dockerfile_path/3rd/
 cp -rf $tools_path/3rd/gtest $dockerfile_path/3rd/
+cp -rf $tools_path/3rd/gdb $dockerfile_path/3rd/
 cd $dockerfile_path/3rd/gcc/
 tar -xjf gcc-4.8.5.tar.bz2
 cd $dockerfile_path/3rd/cmake/
@@ -101,12 +101,10 @@ cd $dockerfile_path/3rd/bison/
 tar -xvf bison-3.0.4.tar.gz
 cd $dockerfile_path/3rd/gtest/
 unzip googletest-release-1.8.0.zip
+cd $dockerfile_path/3rd/gdb/
+tar -xvf gdb-7.6.1.tar.gz
 #build file
 #git config file
-#mysqldemo cnf file
-if [ ! -f "$data_path/mysqldemo.cnf" ]; then
-  cp -rf $tools_path/env/dev/docker/data/demo/mysqldemo.cnf $data_path/mysqldemo.cnf
-fi
 ##build images
 cd $docker_path
 set -x

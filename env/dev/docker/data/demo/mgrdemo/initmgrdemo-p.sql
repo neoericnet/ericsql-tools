@@ -1,0 +1,12 @@
+SET SQL_LOG_BIN=0;
+alter user 'root'@'localhost' identified by 'test';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'test' WITH GRANT OPTION;
+CREATE USER rpl_user@'%' IDENTIFIED BY 'test';
+GRANT REPLICATION SLAVE ON *.* TO rpl_user@'%';
+FLUSH PRIVILEGES;
+SET SQL_LOG_BIN=1;
+CHANGE MASTER TO MASTER_USER='rpl_user', MASTER_PASSWORD='test' FOR CHANNEL 'group_replication_recovery';
+INSTALL PLUGIN group_replication SONAME 'group_replication.so';
+set global group_replication_bootstrap_group=on;
+START GROUP_REPLICATION;
+set global group_replication_bootstrap_group=off;

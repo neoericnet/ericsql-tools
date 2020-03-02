@@ -34,7 +34,8 @@ lower_case_table_names=1
 character_set_server = utf8
 init_connect='SET NAMES utf8'
 
-secure_file_priv = 
+secure_file_priv =
+#skip-grant-tables
 
 #mgr
 server_id=2
@@ -50,8 +51,8 @@ binlog_format=ROW
 transaction_write_set_extraction=XXHASH64
 loose-group-replication-group_name="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 loose-group-replication-start_on_boot=off
-loose-group-replication-local_address= "192.168.168.128:24902"
-loose-group-replication-group_seeds= "192.168.168.128:24901,192.168.168.128:24902,192.168.168.128:24903"
+loose-group-replication-local_address= "127.0.0.1:24902"
+loose-group-replication-group_seeds= "127.0.0.1:24901,127.0.0.1:24902,127.0.0.1:24903"
 loose-group-replication-bootstrap_group=off
 
 [client]
