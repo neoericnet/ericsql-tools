@@ -12,10 +12,7 @@ RUN yum install -y gdb gcc gcc-c++ make python-devel bunzip2 bzip2-devel zlib-de
     && cp -rf /root/dockerfiles/os/init/* /etc/init.d/ \
     && chmod 755 /etc/init.d/* \
     && mkdir -p /root/soft/m4 \
-    && cd /root/soft/m4 \
-    && wget http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.gz \
-    && tar xvf m4-1.4.18.tar.gz \
-    && cd /root/soft/m4/m4-1.4.18 \
+    && cd /root/dockerfiles/3rd/m4/m4-1.4.18 \
     && ./configure && make && make install \
     && mkdir -p /soft/mysql \
     && groupadd mysql \

@@ -30,7 +30,7 @@ fi
 
 #cmake
 cd $BUILD_PATH/mysql
-ls |grep -v "^debug$" |xargs rm -rf
+#ls |grep -v "^debug$" |xargs rm -rf
 cmake $SOURCE_PATH/mysql -DCMAKE_INSTALL_PREFIX=/debug/ \
   -DCMAKE_BUILD_TYPE=Debug \
   -DWITH_INNODB_MEMCACHED=1 \

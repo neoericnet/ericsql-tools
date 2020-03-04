@@ -93,6 +93,7 @@ cp -rf $tools_path/3rd/cmake $dockerfile_path/3rd/
 cp -rf $tools_path/3rd/bison $dockerfile_path/3rd/
 cp -rf $tools_path/3rd/gtest $dockerfile_path/3rd/
 cp -rf $tools_path/3rd/gdb $dockerfile_path/3rd/
+cp -rf $tools_path/3rd/m4 $dockerfile_path/3rd/
 cd $dockerfile_path/3rd/gcc/
 tar -xjf gcc-4.8.5.tar.bz2
 cd $dockerfile_path/3rd/cmake/
@@ -103,6 +104,8 @@ cd $dockerfile_path/3rd/gtest/
 unzip googletest-release-1.8.0.zip
 cd $dockerfile_path/3rd/gdb/
 tar -xvf gdb-7.6.1.tar.gz
+cd $dockerfile_path/3rd/m4/
+tar -xvf m4-1.4.18.tar.gz
 #build file
 #git config file
 ##build images

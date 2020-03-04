@@ -1,0 +1,1 @@
+gdb --args $BUILD_PATH/mysql/debug/bin/mysqld --defaults-file=$DATA_PATH/mgrdemo/mgrdemo1.cnf
