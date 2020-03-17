@@ -9,7 +9,12 @@ s2_password=test
 s3_password=test
 #start 3 dbs
 startmgr
+#wait for servers started
+sleep 20
 #config mgr
-$BUILD_PATH/mysql/debug/bin/mysql -S${DEMO_DATA_PATH}/s1/mysql.sock --connect-expired-password -uroot -p${s1_password} -e "source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/mgrdemo/reinitmgrdemo-p.sql"
-$BUILD_PATH/mysql/debug/bin/mysql -S${DEMO_DATA_PATH}/s2/mysql.sock --connect-expired-password -uroot -p${s2_password} -e "source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/mgrdemo/reinitmgrdemo-s.sql"
-$BUILD_PATH/mysql/debug/bin/mysql -S${DEMO_DATA_PATH}/s3/mysql.sock --connect-expired-password -uroot -p${s3_password} -e "source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/mgrdemo/reinitmgrdemo-s.sql"
+$BUILD_PATH/mysql/debug/bin/mysql -S${DEMO_DATA_PATH}/s1/mysql.sock --connect-expired-password -uroot \
+  -p${s1_password} -e "source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/mgrdemo/reinitmgrdemo-p.sql"
+$BUILD_PATH/mysql/debug/bin/mysql -S${DEMO_DATA_PATH}/s2/mysql.sock --connect-expired-password -uroot \
+  -p${s2_password} -e "source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/mgrdemo/reinitmgrdemo-s.sql"
+$BUILD_PATH/mysql/debug/bin/mysql -S${DEMO_DATA_PATH}/s3/mysql.sock --connect-expired-password -uroot \
+  -p${s3_password} -e "source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/mgrdemo/reinitmgrdemo-s.sql"

@@ -1,7 +1,7 @@
 #!/bin/bash
 #stop
 stopmysql
-set -ex
+set -e
 ##prepare
 DEMO_DATA_PATH=${DATA_PATH}/mysqldemo
 #prepare dir
@@ -18,14 +18,8 @@ s1_password=$(grep 'temporary password' ${DEMO_DATA_PATH}/error.log)
 s1_password=${s1_password:0-12:12}
 #start 3 dbs
 startbuildmysql
+#wait for servers started
+sleep 20
 #config mgr
-#
-#cmd="${BUILD_PATH}/mysql/debug/bin/mysql "
-#cmd="${cmd} -S${DEMO_DATA_PATH}/mysql.sock "
-#cmd="${cmd} --connect-expired-password "
-#cmd="${cmd} -uroot -p${s1_password} "
-#cmd="${cmd} -e ‘source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/initmysqldemo.sql’"
-#$($cmd)
-#eval $cmd
-$BUILD_PATH/mysql/debug/bin/mysqladmin -S${DEMO_DATA_PATH}/mysql.sock -uroot -p${s1_password} password 'test'
-$BUILD_PATH/mysql/debug/bin/mysql -S${DEMO_DATA_PATH}/mysql.sock --connect-expired-password -uroot -ptest -e "source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/initmysqldemo.sql"
+$BUILD_PATH/mysql/debug/bin/mysql -S${DEMO_DATA_PATH}/mysql.sock --connect-expired-password -uroot \
+  -p${s1_password} -e "source ${SOURCE_PATH}/mysql-tools/env/dev/docker/data/demo/initmysqldemo.sql"
