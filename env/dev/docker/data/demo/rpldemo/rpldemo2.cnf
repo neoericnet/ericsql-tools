@@ -60,6 +60,11 @@ slave_preserve_commit_order=1
 master_info_repository=TABLE
 relay_log_info_repository=TABLE
 relay_log_recovery=ON
+#semi sync
+plugin-load=rpl_semi_sync_slave=semisync_slave.so
+loose-rpl-semi-sync-master-timeout=100
+loose-rpl_semi_sync_master_enabled=OFF
+loose-rpl_semi_sync_slave_enabled=ON
 
 [client]
 default-character-set = utf8
